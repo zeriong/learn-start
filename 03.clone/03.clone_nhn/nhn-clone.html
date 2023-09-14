@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>nhn-cloud-clone</title>
+    <link rel="stylesheet" type="text/css" href="css/z-grid.css">
+    <link rel="stylesheet" type="text/css" href="css/grid-test.css">
+    <link rel="stylesheet" type="text/css" href="../../fontawesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="z-layout" id="layout">
+    <div class="menu-sect">
+        <div class="menu-inner">
+            <div class="log-in z-flex z-justify-space-between z-align-center">
+                <div class="login-t"><div class="l-text">로그인</div></div>
+                <div class="cancel-box" onclick="menu_switch()">
+                    <div class="cancel etc-icon2"></div>
+                </div>
+            </div>
+            <div class="menu-div z-cursor-p menu-hover">
+                <div class="menu-hover"></div>
+                <div class="z-w-full z-h-full z-flex z-align-center">소개</div>
+            </div>
+            <div class="event-menu">
+                <div class="ev menu-div z-flex z-justify-space-between z-align-center">
+                    <div class="z-w-full z-h-full z-flex z-align-center">서비스</div>
+                    <div class="etc-icon2 plus-i ev-plus"></div>
+                </div>
+                <div class="event-in-m">
+                    <div class="e-m-c">
+                        <span>전체 서비스 보기</span>
+                    </div>
+                    <div class="event-in-menu">
+                        <div class="in-ev">
+                            <div class="etc-icon2 plus-i"></div>
+                            Compute
+                        </div>
+                        <div class="event-in2-m">
+                            <div class="in2-c e-m-c">Veeam</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Backup</div>
+                            <div class="in2-c e-m-c">ZConverter PC Backup</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Migration</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Disaster Recovery</div>
+                            <div class="in2-c e-m-c">Commvault Backup & Recovery</div>
+                        </div>
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                </div>
+            </div>
+            <div class="event-menu">
+                <div class="ev menu-div z-flex z-justify-space-between z-align-center">
+                    <div class="z-w-full z-h-full z-flex z-align-center">마켓플레이스</div>
+                    <div class="etc-icon2 plus-i ev-plus"></div>
+                </div>
+                <div class="event-in-m">
+                    <div class="e-m-c">
+                        <span>전체 서비스 보기</span>
+                    </div>
+                    <div class="event-in-menu">
+                        <div class="in-ev">
+                            <div class="etc-icon2 plus-i"></div>
+                            Compute
+                        </div>
+                        <div class="event-in2-m">
+                            <div class="in2-c e-m-c">Veeam</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Backup</div>
+                            <div class="in2-c e-m-c">ZConverter PC Backup</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Migration</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Disaster Recovery</div>
+                            <div class="in2-c e-m-c">Commvault Backup & Recovery</div>
+                        </div>
+                    </div>
+
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                </div>
+            </div>
+            <div class="event-menu">
+                <div class="ev menu-div z-flex z-justify-space-between z-align-center">
+                    <div class="z-w-full z-h-full z-flex z-align-center">솔루션</div>
+                    <div class="etc-icon2 plus-i ev-plus"></div>
+                </div>
+                <div class="event-in-m">
+                    <div class="e-m-c">
+                        <span>전체 서비스 보기</span>
+                    </div>
+                    <div class="event-in-menu">
+                        <div class="in-ev">
+                            <div class="etc-icon2 plus-i"></div>
+                            Compute
+                        </div>
+                        <div class="event-in2-m">
+                            <div class="in2-c e-m-c">Veeam</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Backup</div>
+                            <div class="in2-c e-m-c">ZConverter PC Backup</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Migration</div>
+                            <div class="in2-c e-m-c">ZConverter Cloud Disaster Recovery</div>
+                            <div class="in2-c e-m-c">Commvault Backup & Recovery</div>
+                        </div>
+                    </div>
+
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                    <div class="in-ev">
+                        <div class="etc-icon2 plus-i"></div>
+                        Compute
+                    </div>
+                </div>
+            </div>
+            <div class="event-menu">
+                <div class="ev menu-div z-flex z-justify-space-between z-align-center">
+                    <div class="z-w-full z-h-full z-flex z-align-center">요금</div>
+                    <div class="etc-icon2 plus-i ev-plus"></div>
+                </div>
+            </div>
+            <div class="event-menu">
+                <div class="ev menu-div z-flex z-justify-space-between z-align-center">
+                    <div class="z-w-full z-h-full z-flex z-align-center">고객 사례</div>
+                    <div class="etc-icon2 plus-i"></div>
+                </div>
+            </div>
+            <div class="menu-div z-cursor-p menu-hover">
+                <div class="menu-hover"></div>
+                <div class="z-w-full z-h-full z-flex z-align-center">교육 센터</div>
+            </div>
+            <div class="event-menu">
+                <div class="ev menu-div z-flex z-justify-space-between z-align-center">
+                    <div class="z-w-full z-h-full z-flex z-align-center">고객 센터</div>
+                    <div class="etc-icon2 plus-i"></div>
+                </div>
+            </div>
+            <div class="menu-div z-flex z-align-center z-cursor-p menu-hover">
+                <div class="menu-hover"></div>
+                <div class="z-flex z-align-center">Meetup</div>
+                <div class="upload-i etc-icon2 z-flex z-align-center"></div>
+            </div>
+            <div class="menu-div-last z-flex z-justify-space-between z-align-center">
+                <div class="z-flex z-align-center z-cursor-p z-h-full" style="padding: 0 14px;">
+                    <div class="">CONSOLE</div>
+                    <div class="upload-i etc-icon2"></div>
+                </div>
+                <div class="z-h-full z-flex z-align-center z-cursor-p" style="color: white; padding: 0 14px;">앱 다운로드</div>
+            </div>
+        </div>
+    </div>
+    <div class="widget">
+        <div class="w-area"><div class="service-icon w-icon-1"></div></div>
+        <div class="w-area-c"><div class="service-icon w-icon-2"></div></div>
+        <div class="w-area"><div class="service-icon w-icon-3"></div></div>
+    </div>
+    <header class="header z-flex">
+        <div class="header-inner z-flex z-justify-space-between">
+            <div class="h-l-cont z-w-auto z-h-full z-flex z-align-center">
+                <img class="logo-white" src="resource/logo_white.svg">
+                <img class="logo-color" src="resource/logo_color.svg">
+                <div class="h-cont z-flex z-align-center z-hidden-sm-and-down">
+                    <div class="h-div">
+                        <div class="h-c-in">소개</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">서비스</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">마켓플레이스</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">솔루션</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">요금</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">고객 사례</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">파트너</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">교육 센터</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">고객 센터</div>
+                    </div>
+                    <div class="h-div">
+                        <div class="h-c-in">사용자가이드</div>
+                    </div>
+                    <div class="h-div console z-flex z-align-center">
+                        <div class="h-console z-flex z-align-center">
+                            <div class="cons">
+                                CONSOLE
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-r-cont z-flex z-align-center">
+                <div class="i-area z-hidden-sm-and-down">
+                    <div class="s-i etc-icon1"></div>
+                </div>
+                <div class="i-area z-flex z-align-center z-justify-center" style="margin-left: 10px;">
+                    <div class="l-i">KOR</div>
+                </div>
+                <div class="subs-i">
+                    <div class="subs">
+                        뉴스레터 구독
+                    </div>
+                </div>
+                <div class="menu z-hidden-md-and-up">
+                    <div class="bars etc-icon2 z-cursor-p" onclick="menu_switch()"></div>
+                </div>
+                <div class="i-cont z-hidden-sm-and-down" style="margin-left: 21px;">로그인</div>
+                <div class="i-cont z-hidden-sm-and-down">회원가입</div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="intro">
+            <div class="i-1"></div>
+        </section>
+        <section class="notice-area z-hidden-sm-and-down">
+            <div class="notice-inner">
+                <div class="notice-cont z-flex">
+                    <div class="n-c-box1">
+                        <div class="n-t z-flex z-justify-space-between">NHN Cloud Meetup!
+                            <div class="service-icon n-more"></div>
+                        </div>
+                        <div class="n-c z-mt-8">
+                            <div class="n-c-in z-flex z-justify-space-between z-align-center">Android Architecture 패턴: MV 형제들, 옆에서 볼까 앞에서 볼까?
+                                <span>2022. 09. 07</span>
+                            </div>
+                            <div class="n-c-in z-flex z-justify-space-between z-align-center">NCR 이미지 보호/정리 기능 소개
+                                <span>2022. 09. 07</span>
+                            </div>
+                            <div class="n-c-in z-flex z-justify-space-between z-align-center">Service Gateway 서비스 소개
+                                <span>2022. 09. 07</span>
+                            </div>
+                            <div class="n-c-in z-flex z-justify-space-between z-align-center">VPN Gateway(Site-to-Site VPN) 소개
+                                <span>2022. 09. 07</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="n-c-box2">
+                        <div class="n-t z-flex z-justify-space-between">서비스 공지
+                            <div class="n-more service-icon"></div></div>
+                        <div class="n-c z-flex z-mt-8">
+                            <div class="n-c-in z-flex z-align-center">
+                                <div class="n-c-in-b">안내</div>
+                                <span class="n-c-in-c" style="">[NHN AppGuard] 다중 앱 서명 키 무결성 가이드 추가 안내(2022/09/16)</span>
+                            </div>
+                            <span>2022. 09. 07</span>
+                        </div>
+                        <div class="n-c z-flex">
+                            <div class="n-c-in z-flex z-align-center">
+                                <div class="n-c-in-b">안내</div>
+                                <span class="n-c-in-c" style="">[NHN AppGuard] 다중 앱 서명 키 무결성 가이드 추가 안내(2022/09/16)</span>
+                            </div>
+                            <span>2022. 09. 07</span>
+                        </div>
+                        <div class="n-c z-flex">
+                            <div class="n-c-in z-flex z-align-center">
+                                <div class="n-c-in-b">안내</div>
+                                <span class="n-c-in-c" style="">[NHN AppGuard] 다중 앱 서명 키 무결성 가이드 추가 안내(2022/09/16)</span>
+                            </div>
+                            <span>2022. 09. 07</span>
+                        </div>
+                        <div class="n-c z-flex">
+                            <div class="n-c-in z-flex z-align-center">
+                                <div class="n-c-in-b">안내</div>
+                                <span class="n-c-in-c" style="">[NHN AppGuard] 다중 앱 서명 키 무결성 가이드 추가 안내(2022/09/16)</span>
+                            </div>
+                            <span>2022. 09. 07</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="sect-in">
+            <div class="main-title">NHN Cloud 서비스</div>
+            <div class="main-cate z-row">
+                <div id="cate1" class="m-cate z-col-3 c-active">강력하고 안정적인 클라우드 인프라</div>
+                <div id="cate2" class="m-cate z-col-3">게임/모바일/웹 서비스 운영</div>
+                <div id="cate3" class="m-cate z-col-3">효율적인 개발을 위한 다양한 서비스</div>
+                <div id="cate4" class="m-cate z-col-3">기업/조직 운영을 위한 서비스</div>
+            </div>
+            <div class="cate-line"></div>
+            <div class="main-con z-flex z-justify-center">
+                <div class="con-sect">
+                    <div class="con-a">
+                        <div class="con-title"><div class="service-icon compute"></div>Compute</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">Instance</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">Ephemeral Storage Instance</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">GPU Instance</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">Instance Temlate</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">image</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">image Builder</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">Auto Scale</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">System Monitoring</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-1 service-icon"></div>
+                                <div class="con">Virtual Desktop</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con-a mt26">
+                        <div class="con-title"><div class="service-icon graph-bar"></div>Storage</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-2 service-icon"></div>
+                                <div class="con">Block Storage</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-2 service-icon"></div>
+                                <div class="con">NAS (offline)</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-2 service-icon"></div>
+                                <div class="con">NAS<div class="nas-i service-icon"></div></div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-2 service-icon"></div>
+                                <div class="con">object Storage</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-2 service-icon"></div>
+                                <div class="con">Backup</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-2 service-icon"></div>
+                                <div class="con">Data Transporter</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con-a mt26">
+                        <div class="con-title"><div class="service-icon user"></div>Management</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-3 service-icon"></div>
+                                <div class="con">Managed</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-3 service-icon"></div>
+                                <div class="con">service Monitoring</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-3 service-icon"></div>
+                                <div class="con">Certificate Manager</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="con-sect ml42">
+                    <div class="con-a">
+                        <div class="con-title"><div class="service-icon container"></div>Container</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-4 service-icon"></div>
+                                <div class="con">Instance</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-4 service-icon"></div>
+                                <div class="con">Ephemeral Storage Instance</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con-a mt26">
+                        <div class="con-title"><div class="service-icon data-base"></div>Storage</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-5 service-icon"></div>
+                                <div class="con">RDS for MySQL</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con-a mt26">
+                        <div class="con-title"><div class="service-icon cloud"></div>Hybrid & Private Cloud</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-6 service-icon"></div>
+                                <div class="con">NHN Private Cloud</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="con-sect ml42">
+                    <div class="con-a">
+                        <div class="con-title"><div class="service-icon network"></div>Network</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">VPC</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Floating IP</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Floating IP</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Floating IP</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Floating IP</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Floating IP</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Floating IP</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-7 service-icon"></div>
+                                <div class="con">Network Interface</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="con-a mt26">
+                        <div class="con-title"><div class="service-icon delivery"></div>Content Delivery</div>
+                        <div class="con-in">
+                            <div class="con-b">
+                                <div class="con-a-8 service-icon"></div>
+                                <div class="con">CDN</div>
+                            </div>
+                            <div class="con-b">
+                                <div class="con-a-8 service-icon"></div>
+                                <div class="con">Image</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<script>
+
+    let layout_ = document.querySelector('#layout');
+
+    window.addEventListener("DOMContentLoaded", ()=> {
+        console.log("로드1");
+
+        window.addEventListener("scroll", () => {
+
+            console.log("스크롤");
+            let scroll_ = window.scrollY;
+
+            if (window.matchMedia('( min-width: 768px )').matches) {
+                if (scroll_ >= 1) {
+                    layout_.classList.add('scroll-down');
+                } else {
+                    layout_.classList.remove('scroll-down');
+                }
+            }
+        });
+        window.addEventListener('resize', () => {
+
+            let scroll_ = window.scrollY;
+
+            if (window.matchMedia('( max-width: 768px )').matches) {
+                layout_.classList.remove('scroll-down');
+            }
+            if (window.matchMedia('( min-width: 769px )').matches) {
+                if (scroll_ >= 1) {
+                    layout_.classList.add('scroll-down');
+                } else {
+                    layout_.classList.remove('scroll-down');
+                }
+            }
+        });
+        let cate_arr = document.querySelectorAll('.m-cate');
+        cate_arr.forEach((item)=>{          //포이치로 클릭이벤트를 각각 지정해준다.
+            item.addEventListener('click',()=>{
+                cate_arr.forEach((item2)=>{
+                    item2.classList.remove('c-active'); //각각지정해준 이벤트에 다시 포문을 돌려서 모두 삭제하고
+                });
+                item.classList.add('c-active');         //클릭이벤트로 클릭한 요소에만 추가해준다.
+            });
+        });
+
+        let ev_ = document.querySelectorAll('.ev');
+        let in_ev = document.querySelectorAll('.in-ev');
+        ev_.forEach((item)=>{
+            item.addEventListener('click',()=>{
+                console.log('클릭1');
+                item.parentElement.classList.toggle('ev-on');
+            });
+        });
+        in_ev.forEach((item)=>{
+           item.addEventListener('click',()=>{
+               console.log('클릭2');
+               item.parentElement.classList.toggle('ev-in-on');
+           });
+        });
+    });
+    function menu_switch() {
+        layout_.classList.toggle('menu-up');
+    }
+        /*document.querySelector(".nav-inner").addEventListener('transitionend', () => {
+            console.log("오프 리스너");
+            if (!on) {
+                document.querySelector(".nav-inner").classList.remove("nav-fixed");
+            }
+        });*/
+
+
+
+    /* menu_tap.addEventListener('click' , ()=>{
+        if (window.matchMedia( '( min-width: 992px )').matches){
+            menu_div.classList.toggle('left-260');
+            main_wrap.classList.toggle('ml-0');
+        }
+        else if (window.matchMedia( '( max-width: 992px )').matches){
+            menu_div.classList.toggle('left-0');
+            main_wrap.classList.toggle('ml-260');
+        }
+    });
+
+    document.addEventListener('mouseup',(e)=>{
+            if (e.target === menu_1){
+                menu_1.classList.toggle('pop-off');
+            }
+            else if (e.target.classList.contains('menu-popup1')) {
+                menu_1.classList.remove('pop-off');
+            }
+            else if (!e.target.classList.contains('menu-popup1')) {
+                menu_1.classList.add('pop-off');
+            }
+        });     특정영역에 클래스가 포함되면 반응하고 안하고를 만들었다
+
+    */
+</script>
+</body>
+</html>

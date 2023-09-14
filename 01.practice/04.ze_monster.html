@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>ze_monster</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/ze-grid.css">
+    <link rel="stylesheet" type="text/css" href="./css/ze-grid.css">
+</head>
+
+<style>
+    #monster_area {
+        display: flex;
+    }
+    #monster_area .monster {
+        border-radius: 50%;
+        background-color: #3150ff;
+        margin: 4px;
+        padding: 8px;
+        color: #fff;
+        font-size: 12px;
+        cursor: pointer;
+        text-align: center;
+    }
+    #monster_area .monster:hover {
+        transform: scale(1.1);
+    }
+    #monster_area .monster:active{
+        transform: scale(1.3);
+        background-color: #ff4b48;
+    }
+    .border-R {
+        border-right: solid white;
+    }
+    .exp_back {
+        background: #52ff00;
+    }
+    .ze-flex1 {
+        flex:1;
+    }
+</style>
+
+<body class="ze-flex ze-pa-10" style="width: 100%;">
+    <!-- row -->
+    <div class="test-area ze-flex ze-justify-center ze-align-center" style="height: 100%; width: 100%;">
+        <div id="login_section" style="display: none;">
+            <div class="ze-py-1"><input type="text" id="id"></div>
+            <div class="ze-py-1"><input type="text" id="pw"></div>
+            <div class="ze-py-1"><button style="width: 100%;" onclick="login();">로그인</button></div>
+        </div>
+        <div id="main_section" style="display: none;">
+            <div class="ze-my-2">
+                <div class="ze-mb-2">
+                    <span>닉네임: <span id="p_name"></span></span>
+                    <span>HP는 바닥나면 죽음: <span id="p_hp"></span></span>
+                    <span>몬스터 처치: <span id="kill_monster">0</span></span>
+                </div>
+                <div>
+                    <button onclick="logout();">로그아웃</button>
+                    <button onclick="spawnMonster();">몬스터추가</button>
+                    <span>공격력: <span id="dps">20</span></span>
+                </div>
+                <div id="monster_area" class="ze-ma-8 ze-pa-4" style="border: 1px solid #eee; border-radius: 8px;">
+
+                </div>
+                <div class="ze-ma-a ze-pb-2" style="text-align: center; color: white; text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000; font-size: 30px;">Level : <span id="lev">1</span></div>
+                <ul id="exp" class="ze-ma-a ze-flex ze-pa-0 " style="height: 30px; width: 300px; background: gray; border-style: solid; list-style: none; color: white; text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000; text-align: center;">
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_1">E</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_2">x</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_3">p</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_4">e</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_5">r</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_6">i</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_7">e</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_8">n</li>
+                    <li class="ze-pt-1 border-R ze-flex1" id="exp_9">c</li>
+                    <li class="ze-pt-1 ze-flex1" id="exp_10">e</li>
+                </ul>
+                <div class="ze-ma-4" id="max_lv" style="text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000; font-size: 20px; color: white; text-align: center;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let accountList = [
+            { id: "a123", pw: "123456", character: { name: "광전사", hp: 100, level: 1 } },
+            { id: "b123", pw: "123456", character: { name: "파워숄더제룡", hp: 100, level: 1 } },
+            { id: "c123", pw: "123456", character: { name: "펜싱제왕", hp: 100, level: 1 } }
+        ];
+
+        let state = "idle";
+        let player = null;
+        let kill = 0;
+        let exUp = 0;
+        let enemy = 0;
+        let ap = 20;
+        let lv = 1;
+
+        let monsterList = {}; // []; 와 같은 의미
+        let monsterIndex = 0; // []; 와 같은 의미
+
+        // 보이스
+        var voices = [];
+
+        function login () {
+            const id = document.getElementById("id").value;
+            const pw = document.getElementById("pw").value;
+            let idMatch = false;
+
+            if (state == "login") {
+                alert("이미 로그인중입니다.");
+                return;
+            }
+            if (id == "" || pw == "") {
+                alert("아이디 혹은 비밀번호를 입력해주세요.");
+                return;
+            }
+            for (let index in accountList) {
+                const data = accountList[index];
+                console.log("log-1:", data);
+                if (id == data["id"]) {
+                    idMatch = true;
+                    if (pw == data["pw"]) {
+                        state = "login";
+                        player = data["character"]; // 데이터 저장해주고
+                        alert("로그인 성공");
+                        //
+                        speech(`어서오세요. ${player["name"]}님!`);
+                        // 입력된 값 초기화
+                        document.getElementById("id").value = "";
+                        document.getElementById("pw").value = "";
+                        // 영역 보이기 컨트롤
+                        document.getElementById("login_section").style.display = "none"; // 숨기기
+                        document.getElementById("main_section").style.display = "block"; // 보이기
+                        // 플레이더 정보 업데이트
+                        playerStateUpdate();
+
+                        //몬스터 스폰
+                        spawnMonster();
+                    } else {
+                        alert("비밀번호가 잘못되었습니다.");
+                    }
+                    break;
+                }
+            }
+            if (!idMatch) {
+                alert("일치하는 정보가 없습니다." + id);
+            }
+        }
+
+        function logout () {
+            //초기화
+            state = "idle";
+            player = null;
+            // 영역 보이기 컨트롤
+            document.getElementById("login_section").style.display = "block"; // 보이기
+            document.getElementById("main_section").style.display = "none"; // 숨기기
+        }
+
+        function playerStateUpdate () {
+            document.getElementById("p_name").innerHTML = player["name"];
+            document.getElementById("p_hp").innerHTML = player["hp"];
+        }
+
+        function spawnMonster () {
+            for (let i = 0; i < 5; i++) { // 5개 몬스터씩 스폰 //i는 0이고
+                //console.log("step1");
+                const mid = `m_${monsterIndex}`;
+                monsterList[mid] = { name: `몬스터-${monsterIndex}`, hp: 100 };
+                console.log('리스트1:', monsterList);
+                //console.log('리스트2:' +  monsterList);
+                // { m_0 : { name: `몬스터-${monsterIndex}`, hp: 100 } }
+                // html 추가 삽입
+                document.getElementById("monster_area").innerHTML += `<div class='monster' id='${mid}' onclick="attackMonster(this);" >${monsterList[mid]['name']}<br>hp:${monsterList[mid]['hp']}</div>`;
+                // this = document.getElementById("m_0")
+                // 인덱스 증가
+                monsterIndex++;
+                enemy++;
+            }
+            document.getElementById("target_count").innerHTML = enemy;
+        }
+
+        function attackMonster (el) {
+            if (monsterList[el.id]["hp"] > 0) {
+                monsterList[el.id]["hp"] -= ap;
+                if (monsterList[el.id]["hp"] <= 0) {
+                    enemy--;
+                    kill++;
+                    exUp++;
+                    speech(`꾸에에에엑!`);
+                    document.getElementById(el.id).innerHTML = `${monsterList[el.id]['name']}<br>죽음`;
+                    // 삭제 타이머
+                    setTimeout(function() {
+
+                        speech('샤라락!');
+                        delete monsterList[el.id]; // 목록에서 삭제
+                        document.getElementById(el.id).remove(); //요소 삭제
+                    }, 3000); // 3초 (1000 = 1초), (1000 * 60 = 1분), (1000 * 60 * 60 = 1시간)
+                    document.getElementById("target_count").innerHTML = enemy;
+                    document.getElementById("kill_monster").innerHTML = kill;
+                    expUp()
+                } else {
+                    if ((Math.random() * 100) > 50) { // 0~100 학률 반환 값이 50 보다 크다면 = 반반확률
+                        speech('윽!');
+                    } else {
+                        speech('아야!');
+                    }
+                    document.getElementById(el.id).innerHTML = `${monsterList[el.id]['name']}<br>hp:${monsterList[el.id]['hp']}`;
+                }
+
+            }
+        }
+
+        function expUp() {
+            /*for (i = exUp; i <= 10; i++) {
+                document.getElementById(`exp_${i}`).classList.add('exp_back');
+            }*/ //아... 내가 왜 이렇게 만들었을까...
+            document.getElementById(`exp_${exUp}`).classList.add('exp_back');
+            if (lv == 3) {
+                document.getElementById("max_lv").innerHTML = "더 이상 레벨을 올릴 수 없습니다.";
+            }
+            else if (exUp == 10) {
+                    setTimeout(function () {
+                        for(i = 1; i <= 10; i++){
+                        document.getElementById(`exp_${i}`).classList.remove('exp_back');
+                    }}, 500);
+                    lv++;
+                    exUp = 0;
+                    document.getElementById("lev").innerHTML = lv;
+                    player["level"] = lv;
+                    console.log(player);
+                    if(lv == 2){
+                        ap = 50;
+                    }
+                    else if(lv == 3){
+                        ap = 100;
+                    }
+                    document.getElementById("dps").innerHTML = ap;
+                }
+        }
+
+        // 음성관련
+        function setVoiceList() {
+            voices = window.speechSynthesis.getVoices();
+        }
+        // 음성 재생 (해당 내용은 주석 안해두댐)
+        function speech(txt) {
+            var lang = 'ko-KR';
+            var utterThis = new SpeechSynthesisUtterance(txt);
+            utterThis.onend = function (event) {
+                //console.log('end');
+            };
+            utterThis.onerror = function(event) {
+                console.log('error', event);
+            };
+            var voiceFound = false;
+            for(var i = 0; i < voices.length ; i++) {
+                if(voices[i].lang.indexOf(lang) >= 0 || voices[i].lang.indexOf(lang.replace('-', '_')) >= 0) {
+                    utterThis.voice = voices[i];
+                    voiceFound = true;
+                }
+            }
+            if(!voiceFound) {
+                alert('voice not found');
+                return;
+            }
+            utterThis.lang = lang;
+            utterThis.pitch = 1;
+            utterThis.rate = 1.3; //속도
+            utterThis.volume = 0.5;
+            window.speechSynthesis.speak(utterThis);
+        }
+
+        // html 및 요소들이 완전 로딩된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            // 로그인창 표현
+            document.getElementById("login_section").style.display = "block"; // 보이기
+            // 보이스 설정
+            if(window.speechSynthesis) { // 브라우저에서 음성지원을 한다면
+                setVoiceList();
+                if (window.speechSynthesis.onvoiceschanged !== undefined) {
+                    window.speechSynthesis.onvoiceschanged = setVoiceList;
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

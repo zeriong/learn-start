@@ -1,0 +1,98 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ------------ container ----------- */
+.container {
+    width: 1200px;
+    padding: 100px 0;
+    position: relative;
+    box-sizing: border-box;
+}
+.container .cate {}
+.container .title {}
+.container .sub-title {}
+.container .sub-text {}
+/* ------------ header ----------- */
+.header {
+    display: flex;
+    align-items: center;
+    background-color: blue;
+    height: 85px;
+    width: 100%;
+    font-size: 26px;
+    border-bottom: solid rgba(128, 128, 128, 0.22) 1px;
+}
+.header .header-area {
+    padding: 0 160px;
+}
+.header .header_text {
+
+}
+/* ------------ intro ----------- */
+.intro {
+    background-color: white;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+}
+/* --------------- section 1 --------------- */
+.section1 {
+    background-color: #80b5ff;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+}
+/* -------------- section 2 --------------- */
+.section2 {
+    background-color: #b862ff;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+}
+/* -------------- section 3 ----------------- */
+.section3 {
+    background-color: #8effb6;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+}
+/* -----  section 4  --------------- */
+.section4 {
+    background-color: white;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+}
+/* -------------- section 5 ----------------- */
+.section5 {
+    background-color: #ffa6f0;
+    width: 100%;
+    height: 680px;
+    display: flex;
+    justify-content: center;
+}
+/* -------------- tail ----------------- */
+.tail {
+    display: flex;
+    align-items: center;
+    background-color: #7c7c7c;
+    height: 60px;
+}
+.tail .tail-area{
+    padding: 0 160px;
+}
+/* ================ media ================= */
+@media only screen and (min-width: 2294px) {}
+@media only screen and (max-width: 1279px) {}
+@media only screen and (max-width: 959px) {}
+@media only screen and (max-width: 790px) {}
+@media only screen and (max-width: 599px) {}

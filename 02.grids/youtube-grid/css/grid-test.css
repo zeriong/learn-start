@@ -1,0 +1,189 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  background-color: #eeeeee;
+  position: fixed;
+  border-bottom: 1px solid #dadada;
+}
+.header .filter {
+  width: calc(100% - 240px);
+  height: 58px;
+  position: fixed;
+  margin-left: 240px;
+  border-bottom: 1px solid #dadada;
+  -ms-overflow-style: none;
+  background-color: white;
+}
+.header .filter .filter-area {
+  width: 100%;
+  justify-content: center;
+}
+.header .search-area {
+  justify-content: center;
+  width: 100%;
+  margin: 0 48px;
+}
+.header .dod {
+  width: 64px;
+}
+
+.line {
+  width: 100%;
+  border-top: 1px solid #dadada;
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  width: 240px;
+  background-color: red;
+  height: 100%;
+  margin-top: 56px;
+  overflow: scroll;
+}
+.nav .mini-nav {
+  display: none;
+}
+
+.main {
+  margin: 114px 0 0 240px;
+  padding-top: 20px;
+  background-color: #f3f3f3;
+  width: calc(100% - 240px);
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.skyblue {
+  background-color: skyblue;
+}
+
+.wh100 {
+  height: 100%;
+  width: 100%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.icon {
+  width: 40px;
+  padding: 4px;
+}
+
+.box {
+  height: 252px;
+  width: 100%;
+}
+
+/*-------- 반응형 -------*/
+/*--- custom-col = ccol -----*/
+@media (min-width: 500px) {
+  .z-layout .col-500-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+@media (min-width: 510px) {
+  .z-layout .col-510-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+@media (min-width: 887px) {
+  .z-layout .col-887-4 {
+    flex: 0 0 33.3333333333%;
+    max-width: 33.3333333333%;
+  }
+}
+@media (min-width: 1144px) {
+  .z-layout .col-1144-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+@media (min-width: 1968px) {
+  .z-layout .col-1968-20per {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+@media (min-width: 2305px) {
+  .z-layout .col-max-2 {
+    flex: 0 0 16.6666666667%;
+    max-width: 16.6666666667%;
+  }
+}
+/*-------- max -------*/
+@media (max-width: 500px) {
+  .z-layout .main {
+    padding: 20px 40px;
+  }
+}
+@media (max-width: 656px) {
+  .z-layout .header .search-area {
+    margin: 0;
+    justify-content: end;
+  }
+  .z-layout .header .search-area .search {
+    display: none;
+  }
+  .z-layout .header .search-area .dod {
+    width: 48px;
+  }
+}
+@media (max-width: 792px) {
+  .nav {
+    display: none;
+  }
+  .z-layout .header .filter {
+    width: 100%;
+    margin: 0;
+  }
+  .z-layout .main {
+    margin: 114px 0 0 0;
+    width: 100%;
+  }
+}
+@media (max-width: 1314px) {
+  .nav {
+    width: 72px;
+    overflow: hidden;
+  }
+  .nav .nav-main {
+    display: none;
+  }
+  .nav .mini-nav {
+    display: block;
+  }
+  .header .filter {
+    width: calc(100% - 72px);
+    margin-left: 72px;
+  }
+  .main {
+    margin: 114px 0 0 72px;
+    width: calc(100% - 72px);
+  }
+}
+@media (max-width: 1610px) {
+  .header .filter .filter-area {
+    justify-content: start;
+  }
+}
+
+/*# sourceMappingURL=grid-test.css.map */

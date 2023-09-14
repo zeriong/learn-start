@@ -1,0 +1,582 @@
+*{
+    font-family: 'Noto Sans KR', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* ------------ container ----------- */
+.container {
+    width: 100%;
+    max-width: 1280px;
+    height: auto;
+    padding: 120px 40px;
+    position: relative;
+    gap: 0 20px;
+}
+.container .cate {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+.container .title {
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 30px;
+    line-height: 1.5;
+}
+.container .in-contents {
+    max-width: 380px;
+    height: auto;
+}
+/* ------------ menu ----------- */
+.display-off{
+    display: none;
+}
+.overHidden{
+    overflow: hidden;
+}
+.menu-back {
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.32);
+}
+.menu {
+    width: 348px;
+    height: 100%;
+    position: fixed;
+    right: -70%;
+    background-color: white;
+    z-index: 3;
+    padding: 24px 48px 120px 24px;
+    border-radius: 8px 0 0 10px;
+    transition: 0.2s ease-in;
+}
+.menu .cancel-icon {
+    position:absolute;
+    font-size: 22px;
+    right: 30px;
+    top: 20px;
+    cursor: pointer;
+}
+.menu .line {
+    width: 100%;
+    border-top: 1px #e9ebee solid;
+    margin-bottom: 16px;
+}
+.menu .home {
+    padding: 12px 16px;
+    background-color: #f4f4f5;
+    border-radius: 6px;
+    color: #00b0f4;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+.menu .home:hover {
+    text-decoration: underline;
+}
+.menu .contents {
+    font-weight: 300;
+    font-size: 16px;
+}
+.menu .contents > div {
+    padding: 8px 16px;
+    cursor: pointer;
+}
+.menu .contents > div:not(:first-child) {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+.menu .contents > div:hover {
+    text-decoration: underline;
+}
+.menu .menu-button {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    transform: translate(-50%);
+    width: calc(100% - 38px);
+    border-radius: 40px;
+    color: white;
+    background-color: #5865f2;
+    padding: 11px 16px;
+    font-weight: 300;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.menu .menu-button:hover {
+    box-shadow: rgba(0, 0, 0, 20%) -1px 8px 15px;
+    background-color: #707aee;
+}
+.scrollBar{
+    background-image: url("../page_resource/clone_discord/scroll.png");
+    height: 100%;
+    width: 18px;
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    top: 0;
+}
+
+/* ------------ header ----------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 76px;
+    width: 100%;
+    font-size: 26px;
+    position: absolute;
+    z-index: 1;
+    overflow: hidden;
+    top: 0;
+}
+.header .header-area{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    padding: 0 40px;
+    position: relative;
+}
+.header .icon {
+    width: 124px;
+    display: flex;
+    align-items: center;
+}
+.header .login {
+    width: 124px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.header .bars {
+    color: white;
+    font-size: 30px;
+    margin-left: 24px;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.header .header-contents {
+    width: 932px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: white;
+}
+.header .header-contents > ul {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+.header .header-contents > ul:hover {
+    text-decoration: underline;
+}
+.header .log-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 400;
+    width: 74px;
+    height: 38px;
+    position: relative;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    padding-bottom: 2px;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.header .log-button:hover {
+    color: #5865f2;
+    box-shadow: rgba(0, 0, 0, 20%) -1px 8px 15px;
+}
+/* ------------ intro ----------- */
+.intro {
+    background-color: #404eed;
+    max-height: 652px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.intro .container {
+    position: absolute;
+}
+.intro .intro-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.intro .intro-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.intro .intro-cate {
+    font-size: 56px;
+    font-weight: bold;
+    color: white;
+    left: 50%;
+    top: 0;
+    white-space: nowrap;
+    text-align: center;
+    padding: 65px 0;
+}
+.intro .intro-title {
+    box-sizing: border-box;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    line-height: 1.8;
+    padding: 0 210px;
+    margin-bottom: 46px;
+    height: auto;
+    width: 100%;
+}
+.intro .box-area1 {
+    justify-content: end;
+}
+
+.intro .intro-box1 {
+    border-radius: 30px;
+    color: black;
+    background-color: white;
+    padding: 16px 32px;
+    font-weight: 300;
+    font-size: 20px;
+    margin-right: 24px;
+    max-width: 280px;
+    width: 100%;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.intro .intro-box1:hover {
+    box-shadow: rgba(0, 0, 0, 20%) -1px 8px 15px;
+    color: #5865f2;
+}
+.intro .intro-box2 {
+    border-radius: 30px;
+    background-color: #23272a;
+    padding: 16px 32px;
+    font-weight: 300;
+    font-size: 20px;
+    max-width: 318px;
+    width: 100%;
+    color: white;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.intro .intro-box2:hover {
+    box-shadow: rgba(0, 0, 0, 20%) -1px 8px 15px;
+    background-color: #333638;
+}
+/* --------------- section 1 --------------- */
+.section1 {
+    background-color: #ffffff;
+    width: 100%;
+    max-height: 680px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.contents-r {
+    position: relative;
+    width: 100%;
+    height: auto;
+    color: #23272a;
+    justify-content: end;
+}
+.contents-r-img {
+    justify-content: end;
+}
+.conts-img {
+    height: auto;
+    max-width: 678px;
+    width: 100%;
+}
+/* -------------- section 2 --------------- */
+.section2 {
+    background-color: #f4f4f5;
+    width: 100%;
+    max-height: 680px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.section2 .container .in-contents{
+    padding-left: 20px;
+}
+.contents-l {
+    position: relative;
+    width: 100%;
+    color: #23272a;
+}
+/* -------------- section 3 ----------------- */
+.section3 {
+    background-color: #fff;
+    width: 100%;
+    max-height: 680px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+/* -----  section 4  --------------- */
+.section4 {
+    background-color: #f4f4f5;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.section4 .container{
+    text-align: center;
+    padding: 120px 40px 80px;
+}
+.section4 .cate {
+    font-size: 40px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+.section4 .title {
+    padding: 0 120px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-size: 20px;
+    font-weight: 300;
+    margin-top: 30px;
+}
+/* -------------- section 5 ----------------- */
+.section5 {
+    background-color: #f4f4f5;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.section5 .sect5-area {
+    position: relative;
+    width: 100%;
+}
+.section5 .title {
+    font-size: 34px;
+    text-align: center;
+    position: relative;
+    top: -30px;
+    font-weight: 500;
+    width: 100%;
+}
+.section5 .sect5-box {
+    border-radius: 30px;
+    color: white;
+    background-color: #5865f2;
+    padding: 16px 34px;
+    font-weight: 300;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0 120px;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.section5 .sect5-box:hover {
+    box-shadow: rgba(0, 0, 0, 20%) -1px 8px 15px;
+    background-color: #707aee;
+}
+/* -------------- tail ----------------- */
+.tail {
+    background-color: #23272b;
+    width: 100%;
+    height: auto;
+    box-sizing: content-box;
+}
+.tail .tail-wrap{
+    padding: 80px 0 64px;
+    position: relative;
+}
+.tail .tail-area{
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    gap: 0 20px;
+    padding: 0 40px;
+}
+.tail .tail-area .in-area {
+    width: 100%;
+    height: 100%;
+}
+.tail .cate {
+    font-size: 32px;
+    color: #5764f1;
+    width: 100%;
+    max-width: 280px;
+    min-width: 220px;
+}
+.tail .tail-lang{
+    margin: 24px 1px 0 0;
+    width: 90px;
+    cursor: pointer;
+}
+.tail .t-contents {
+    margin-bottom: 40px;
+}
+.tail .t-contents > div {
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 300;
+    margin-top: 14px;
+}
+.tail .sub-cate  {
+    cursor: unset;
+    color: #5764f1;
+    font-weight: 200;
+    font-size: 17px;
+    padding-top: 8px;
+}
+.tail .solid-line {
+    border-top: #5764f1 solid 1px;
+    width: 100%;
+    max-width: 1280px;
+    left: 50%;
+}
+.tail .button {
+    border-radius: 40px;
+    font-size: 15px;
+    padding: 10px 16px;
+    background-color: #5865f2;
+    color: white;
+    font-weight: 300;
+    cursor: pointer;
+    transition: 0.13s ease-in;
+}
+.tail .button:hover {
+    box-shadow: rgba(0, 0, 0, 20%) -1px 8px 15px;
+    background-color: #707aee;
+}
+/* ================ media ================= */
+@media only screen and (min-width: 2294px) {}
+@media only screen and (max-width: 1279px) {}
+@media only screen and (max-width: 959px) {
+    .container {
+        padding: 80px 40px;
+        height: 100%;
+    }
+    .container .cate {
+        font-size: clamp(20px,4vw,48px);
+    }
+    .container .title {
+        font-size: clamp(8px,2vw,20px);
+    }
+    .header .header-area{
+        justify-content: space-between;
+    }
+    .header .login {
+        width: 124px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    .intro {
+        max-height: 765px;
+    }
+    .intro .intro-img:first-child {
+        margin-left: -200px;
+    }
+    .intro .intro-cate {
+        text-align: start;
+        line-height: 1;
+        padding: 65px 0 36px;
+    }
+    .intro .intro-title {
+        text-align: start;
+        line-height: 1.6;
+        padding: 0;
+        margin-bottom: 36px;
+        max-width: 500px;
+    }
+    .intro .box-area1 ,
+    .intro .box-area2{
+        justify-content: start;
+    }
+    .intro .box-area1 {
+        margin-bottom: 20px;
+    }
+    .intro .intro-box1 {
+        margin: 0;
+    }
+}
+@media only screen and (max-width: 790px) {}
+@media only screen and (max-width: 599px) {
+    .container {
+        padding: 56px 24px;
+        height: 100%;
+    }
+    .container .div-reverse {
+        flex-direction: column-reverse;
+    }
+    .container .cate {
+        font-size: clamp(20px,4vw,48px);
+        margin-top: 20px;
+    }
+    .container .title {
+        font-size: 17px;
+    }
+    .intro .container .intro-cate {
+        font-size: clamp(24px,5vw,48px);
+        padding: 78px 0 30px;
+    }
+    .intro .container .intro-title {
+        font-size: clamp(16px,1vh,20px);
+        margin: 0 0 24px;
+        max-width: 100%;
+    }
+    .intro {
+        max-height: 778px;
+    }
+    .section4 .container{
+        text-align: center;
+        padding: 56px 24px;
+    }
+    .container .in-contents {
+        max-width: 100%;
+        justify-content: start;
+        text-align: start;
+    }
+    .section2 .container .in-contents{
+        padding: 0;
+    }
+    .conts-img {
+        max-width: 100%;
+        margin-top: 24px;
+    }
+    .section4 .container .cate {
+        margin-top: -10px;
+        text-align: start;
+    }
+    .section4 .container .title {
+        text-align: start;
+        max-width: 100%;
+        padding: 0 0 20px;
+    }
+    .section5 .sect5-box {
+        width: 100%;
+        margin: 0 24px 58px;
+    }
+}

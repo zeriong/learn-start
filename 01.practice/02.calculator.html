@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>계산기를 만들어봐요</title>
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/ze-grid.css">
+    <link rel="stylesheet" type="text/css" href="./css/sample2.css">
+</head>
+<body class="ze-ma-a">
+<div class="test-area" style="margin: auto; width: 500px; padding-top: 90px; text-align: center;
+      font-size: 30px; color: white;text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;">
+    젤렁의 계산기
+    <div style="margin: 10px;"></div>
+    <ul class="result-box ze-pt-6 ze-pb-4 ze-px-6 ze-ma-0" style="text-align: right; height:auto;">
+        <li class="" style=" width: 100%; height: 20px; font-size: 16px; " id="log"></li>
+        <li class="" style=" width: 100%;" id="result">0</li>
+    </ul>
+    <ul class="ze-ma-a ze-flex ze-justify-center ze-pa-0 box-basic">
+        <li class="ze-pt-7 pointer" onclick="perc()">%</li>
+        <li class="ze-pt-7 pointer" onclick="ce()">CE</li>
+        <li class="ze-pt-7 pointer" onclick="reset_()">C</li>
+        <li class="ze-pt-7 pointer pointer-l" onclick="del()"><[x]</li>
+    </ul>
+    <ul class="ze-ma-a ze-flex ze-justify-center ze-pa-0 box-basic">
+        <li class="ze-pt-7 pointer" onclick="fraction()">1/x</li>
+        <li class="ze-pt-7 pointer" onclick="square()">x²</li>
+        <li class="ze-pt-7 pointer" onclick="rut()">√</li>
+        <li class="ze-pt-7 pointer pointer-l" onclick="oper('÷')">÷</li>
+    </ul>
+    <ul class="ze-ma-a ze-flex ze-justify-center ze-pa-0 box-basic">
+        <li class="ze-pt-7 pointer" onclick="num(7)">7</li>
+        <li class="ze-pt-7 pointer" onclick="num(8)">8</li>
+        <li class="ze-pt-7 pointer" onclick="num(9)">9</li>
+        <li class="ze-pt-7 pointer pointer-l" onclick="oper('X')"id="x">X</li>
+    </ul>
+    <ul class="ze-ma-a ze-flex ze-justify-center ze-pa-0 box-basic">
+        <li class="ze-pt-7 pointer" onclick="num(4)">4</li>
+        <li class="ze-pt-7 pointer" onclick="num(5)">5</li>
+        <li class="ze-pt-7 pointer" onclick="num(6)">6</li>
+        <li class="ze-pt-7 pointer pointer-l" onclick="oper('ㅡ')">ㅡ</li>
+    </ul>
+    <ul class="ze-ma-a ze-flex ze-justify-center ze-pa-0 box-basic">
+        <li class="ze-pt-7 pointer" onclick="num(1)">1</li>
+        <li class="ze-pt-7 pointer" onclick="num(2)">2</li>
+        <li class="ze-pt-7 pointer" onclick="num(3)">3</li>
+        <li class="ze-pt-7 pointer pointer-l" onclick="oper('+')">+</li>
+    </ul>
+    <ul class="ze-ma-a ze-flex ze-justify-center ze-pa-0 box-basic">
+        <li class="ze-pt-7 pointer" style="border-radius: 0 0 0 50px;" onclick="sumMinus()">+/-</li>
+        <li class="ze-pt-7 pointer" onclick="num(0)">0</li>
+        <li class="ze-pt-7 pointer" onclick="num('.')">.</li>
+        <li class="ze-pt-7 pointer pointer-l" style="border-radius: 0 0 50px 0;" onclick="equal()">=</li>
+    </ul>
+</div>
+<script>
+    let n1 = ""; // 첫번째 연산대상
+    let n2 = ""; // 두번째 연산대상
+    let oper_ = ""; // 연산상태
+    let state = false; // 연산자 선택
+    let log_save = ""; // 로그기록
+    let result_ = ""; // 결과창
+        function num(val) {
+            if (!state) {
+                n1 += val;     //첫번째 연산대상에 매개변수를 더하라
+                result_ = n1; //현재 입력중인 값 결과창에 출력
+            }
+            else {
+                n2 += val;    //두번째 연산대상에 매개변수를 더하라 (문자열 형태인경우 추가적으로 뒤로 붙고 숫자면 ' + ' 된다)
+                result_ = n2;
+            }
+            log_save += val;   //로그기록을 계속해서 갱신 해준다.
+            print_result();  //결과창을 innerHTML로 출력
+        }
+        function oper(val) {
+            if (!state && n1 == "" || state && n2 == "") { // 만약 연산자가 false 이고 n1의 값이 없을경우 return
+                return;
+            }
+            /*if (!state || n1 == "") { // 연산자가 눌리지 않았거나, 첫번째 값이 입력되지 않았을경우
+                return;
+            }
+            if(!state && n1 == "") || n2 == "") { // 연산자가 눌리지 않았고 첫번째 값이 입력되지 않았을경우
+                 return;
+            }
+            */
+            oper_ = val;
+            if (!state) {        //( ! blahblah )처럼 앞에 ' ! ' 가 들어간 경우는 false / true 중 false를 뜻함
+                state = true;
+            }
+            else {
+                calc_();        // 중간 연산 결과를 결과창에 표시하기 위한 연산 function
+            }
+            log_save += val;   //로그기록을 계속해서 갱신 해준다.
+            print_log();     //초기화 된 값을 "log"로 출력
+            print_result();  //결과창을 innerHTML로 출력
+        }
+        function calc_() {
+            let val;      // function clac 내부에서만 쓰기위한 변수를 따로 지정.
+
+            if (oper_ == '+') {
+                val = parseFloat(n1) + parseFloat(n2); // parseFloat = 소수점자리까지 계산, parseInt = 정수만계산
+            }
+            else if (oper_ == 'ㅡ') {
+                val = parseFloat(n1) - parseFloat(n2);
+            }
+            else if (oper_ == 'X') {
+                val = parseFloat(n1) * parseFloat(n2);
+            }
+            else if (oper_ == '÷') {
+                val = parseFloat(n1) / parseFloat(n2);
+            }
+            n1 = val;       //결과값을 첫번째 연산대상으로 옮겨 반복연산을 가능하게 만듦
+            result_ = val;  //결과창에 결과값 출력을 위해 [(변수)결과창]과 실제 결과값을 같게 해준다.
+            n2 = "";        // 두번째 연산대상을 초기화 시켜서 ' function num - else ' 의 계산오류를 방지한다
+        }
+        function reset_() {
+            n1 = "";
+            n2 = "";
+            oper_ = "";         //모든 값을 초기로 돌린다.
+            state = false;
+            log_save = "";
+            result_ = "";
+            print_result();     //초기화 된 값을 결과창으로 출력
+            print_log();        //초기화 된 값을 "log"로 출력
+        }
+        function equal() {
+            if (state && n2 == "" || !state && n1 == "") {  // 연산자:T, 두번째대상 입력x or 연산자:F, 첫번째대상 입력x = return
+                return;                                     // return은 작동하지 않는 상태를 의미
+            }
+
+            let val;        // function equal 내부에서만 쓰기위한 변수를 따로 지정.
+
+            if (oper_ == '+') {
+                val = parseFloat(n1) + parseFloat(n2);
+            }
+            else if (oper_ == 'ㅡ') {
+                val = parseFloat(n1) - parseFloat(n2);
+            }
+            else if (oper_ == 'X') {
+                val = parseFloat(n1) * parseFloat(n2);
+            }
+            else if (oper_ == '÷') {
+                val = parseFloat(n1) / parseFloat(n2);
+            }
+            result_ = val;
+                document.getElementById("log").innerHTML = log_save + "="; //로그기록 + "=" 로 최종 값을 표시
+                print_result()
+            }
+        function print_result() {
+                document.getElementById("result").innerHTML = result_; //결과창을 innerHTML으로 "result"에서 출력
+            }
+        function print_log() {
+            document.getElementById("log").innerHTML = log_save; //로그기록을 innerHTML으로 "log"에서 출력
+        }
+    </script>

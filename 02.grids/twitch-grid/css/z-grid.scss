@@ -1,0 +1,326 @@
+@charset "UTF-8";
+
+// var
+
+$grid-columns: 12 !default;
+
+$grid-breakpoints: (
+        'xs': 0,
+        'sm': 1000px,
+        'md': 1200px,
+        'lg': 1490px,
+        'xl': 1790px
+) !default;
+
+$display-breakpoints: (
+        'print-only': 'only print',
+        'screen-only': 'only screen',
+        'xs-only': 'only screen and (max-width: #{map-get($grid-breakpoints, 'sm') - 1})',
+        'sm-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'sm')}) and (max-width: #{map-get($grid-breakpoints, 'md') - 1})',
+        'sm-and-down': 'only screen and (max-width: #{map-get($grid-breakpoints, 'md') - 1})',
+        'sm-and-up': 'only screen and (min-width: #{map-get($grid-breakpoints, 'sm')})',
+        'md-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'md')}) and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})',
+        'md-and-down': 'only screen and (max-width: #{map-get($grid-breakpoints, 'lg') - 1})',
+        'md-and-up': 'only screen and (min-width: #{map-get($grid-breakpoints, 'md')})',
+        'lg-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'lg')}) and (max-width: #{map-get($grid-breakpoints, 'xl') - 1})',
+        'lg-and-down': 'only screen and (max-width: #{map-get($grid-breakpoints, 'xl') - 1})',
+        'lg-and-up': 'only screen and (min-width: #{map-get($grid-breakpoints, 'lg')})',
+        'xl-only': 'only screen and (min-width: #{map-get($grid-breakpoints, 'xl')})'
+) !default;
+
+/* # Base
+-------------------------------------------------------------------------------*/
+
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* # 스크린 사이즈 기준
+xs: 0 ~ 599
+sm: 600 ~ 959
+md: 960 ~ 1279
+lg: 1280 ~ 1920
+xl: 1920 ~
+-------------------------------------------------------------------------------*/
+
+.z-layout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+
+  /* # 그리드 제어
+  -------------------------------------------------------------------------------*/
+  .z-flex {
+    display: flex;
+  }
+
+  .z-row {
+    /*flex-direction: row !important;*/
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+  }
+
+  .z-column {
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .z-grow {
+    flex-grow: 1 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .z-shrink {
+    flex-grow: 0 !important;
+    flex-shrink: 1 !important;
+  }
+
+  /** 정렬방식 **/
+  .z-justify-start {
+    justify-content: flex-start !important;
+  }
+
+  .z-justify-end {
+    justify-content: flex-end !important;
+  }
+
+  .z-justify-center {
+    justify-content: center !important;
+  }
+
+  .z-justify-space-between {
+    justify-content: space-between !important;
+  }
+
+  .z-justify-space-around {
+    justify-content: space-around !important;
+  }
+
+  .z-align-start {
+    align-items: flex-start !important;
+  }
+
+  .z-align-end {
+    align-items: flex-end !important;
+  }
+
+  .z-align-center {
+    align-items: center !important;
+  }
+
+  .z-align-baseline {
+    align-items: baseline !important;
+  }
+
+  .z-align-stretch {
+    align-items: stretch !important;
+  }
+
+  .z-align-content-start {
+    align-content: flex-start !important;
+  }
+
+  .z-align-content-end {
+    align-content: flex-end !important;
+  }
+
+  .z-align-content-center {
+    align-content: center !important;
+  }
+
+  .z-align-content-space-between {
+    align-content: space-between !important;
+  }
+
+  .z-align-content-space-around {
+    align-content: space-around !important;
+  }
+
+  .z-align-content-stretch {
+    align-content: stretch !important;
+  }
+
+  /* # 유틸
+  -------------------------------------------------------------------------------*/
+
+  //margin
+  @for $i from 0 through 12 {
+    .z-ma-#{$i} {
+      margin: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-mx-#{$i} {
+      margin-left: #{$i * 4}px !important;
+      margin-right: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-my-#{$i} {
+      margin-top: #{$i * 4}px !important;
+      margin-bottom: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-mt-#{$i} {
+      margin-top: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-mr-#{$i} {
+      margin-right: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-mb-#{$i} {
+      margin-bottom: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-ml-#{$i} {
+      margin-left: #{$i * 4}px !important;
+    }
+  }
+
+  //padding
+  @for $i from 0 through 12 {
+    .z-pa-#{$i} {
+      padding: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-px-#{$i} {
+      padding-left: #{$i * 4}px !important;
+      padding-right: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-py-#{$i} {
+      padding-top: #{$i * 4}px !important;
+      padding-bottom: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-pt-#{$i} {
+      padding-top: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-pr-#{$i} {
+      padding-right: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-pb-#{$i} {
+      padding-bottom: #{$i * 4}px !important;
+    }
+  }
+  @for $i from 0 through 12 {
+    .z-pl-#{$i} {
+      padding-left: #{$i * 4}px !important;
+    }
+  }
+
+  /* # 반응형 사이트를 위한 스크린 크기별 제어
+  -------------------------------------------------------------------------------*/
+
+  @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+  }
+  @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+    @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+  }
+  @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+      @media (min-width: $min) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  }
+  @mixin make-col-ready($gutter: 0) {
+    width: 100%;
+    //padding: $gutter / 2;
+  }
+
+  @mixin make-col($size, $columns: $grid-columns) {
+    flex: 0 0 percentage($size / $columns);
+    // the width of the column. Applies to IE10+ and Firefox fix
+    max-width: percentage($size / $columns);
+  }
+
+  @mixin make-grid-columns($columns: $grid-columns, $gutter: 0, $breakpoints: $grid-breakpoints) {
+    %grid-column {
+      width: 100%;
+      //padding: $gutter / 2;
+    }
+    @each $breakpoint in map-keys($breakpoints) {
+      $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+      @for $i from 1 through $columns {
+        .z-col#{$infix}-#{$i} {
+          @extend %grid-column;
+        }
+        .z-col#{$infix},
+        .z-col#{$infix}-auto {
+          @extend %grid-column;
+        }
+        @include media-breakpoint-up($breakpoint, $breakpoints) {
+          .z-col#{$infix} {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+          }
+          .z-col#{$infix}-auto {
+            flex: 0 0 auto;
+            width: auto;
+            max-width: 100%; // Reset earlier grid tiers
+          }
+          @for $i from 1 through $columns {
+            .z-col#{$infix}-#{$i} {
+              @include make-col($i, $columns);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* # .hidden-xs ~ .hidden-lg
+     -------------------------------------------------------------------- */
+  @each $size, $media_query in $display-breakpoints {
+    .z-hidden {
+      &-#{$size} {
+        @media #{$media_query} {
+          display: none !important;
+        }
+      }
+    }
+  }
+
+  /* # columns
+     -------------------------------------------------------------------- */
+  @include make-grid-columns;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,563 @@
+* {
+  box-sizing: border-box;
+  list-style: none;
+}
+
+/*
+ul::-webkit-scrollbar{
+  width: 8px;
+}
+ul::-webkit-scrollbar-thumb{
+  height: 50%;
+  background-color: #9497a0;
+  border-radius: 8px;
+}
+ul::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+*/
+.down-icon {
+  color: #595b5e;
+}
+
+section {
+  overflow: hidden;
+}
+
+#layout.menu-up {
+  overflow: hidden;
+}
+#layout.menu-up .menu-back {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.49);
+  z-index: 9;
+  position: fixed;
+  display: block;
+}
+#layout.menu-up .menu-sect {
+  width: 320px;
+  height: 100%;
+  background-color: #2f3543;
+  position: fixed;
+  left: 0;
+  z-index: 10;
+  color: white;
+  fill: white;
+}
+#layout.menu-up .menu-sect .menu-a {
+  padding: 15px 30px;
+  height: 52px;
+  width: 100%;
+  border-bottom: 1px solid #535662;
+  font-size: 16px;
+  font-weight: bold;
+}
+#layout .menu-back {
+  display: none;
+}
+#layout .menu-sect {
+  width: 320px;
+  height: 100%;
+  background-color: #2f3543;
+  position: fixed;
+  left: -70%;
+  z-index: 10;
+  color: white;
+  fill: white;
+  transition: 0.3s all ease;
+}
+#layout .menu-sect .menu-a {
+  padding: 15px 30px;
+  height: 52px;
+  width: 100%;
+  border-bottom: 1px solid #535662;
+  font-size: 16px;
+  font-weight: bold;
+}
+#layout .header {
+  height: 40px;
+  width: 100%;
+  background-color: #0b0d12;
+}
+#layout .header .h-area {
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 40px;
+}
+#layout .header .h-area .h-contents .h-con1 {
+  margin-right: 30px;
+  font-size: 15px;
+  color: #b6b7b8;
+  font-weight: bold;
+}
+#layout .header .h-area .h-contents .h-con2 {
+  margin-left: 30px;
+  font-size: 15px;
+  color: #b6b7b8;
+  font-weight: bold;
+}
+#layout .md-header {
+  height: 48px;
+  width: 100%;
+  background-color: white;
+  padding: 0 20px;
+}
+#layout.change-n main {
+  width: 100%;
+  height: 100%;
+}
+#layout.change-n main .intro {
+  width: 100%;
+  height: 72vh;
+  background-color: lightgray;
+  position: relative;
+}
+#layout.change-n main .intro .nav {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  top: 0;
+  z-index: 5;
+}
+#layout.change-n main .intro .nav .n-area {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  transition: 0.3s ease-in-out all;
+}
+#layout.change-n main .intro .nav .n-area .n-contents {
+  max-width: 1520px;
+  width: 100%;
+  height: 50px;
+  background-color: red;
+}
+#layout main {
+  width: 100%;
+  height: 100%;
+}
+#layout main .intro {
+  width: 100%;
+  height: 72vh;
+  background-color: lightgray;
+  position: relative;
+}
+#layout main .intro .nav {
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  top: 40px;
+}
+#layout main .intro .nav .n-area {
+  max-width: 1520px;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  transition: all 0.8s ease-in-out;
+}
+#layout main .intro .nav .n-area .n-contents {
+  position: absolute;
+  max-width: 1520px;
+  width: 100%;
+  height: 50px;
+  background-color: red;
+}
+#layout main .sect1 {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  padding: 50px 0;
+  background-image: url("../resource/sect1.webp");
+  background-size: cover;
+  background-position: top;
+  margin-top: -21px;
+  clip-path: polygon(0 0, calc(50% - 720px) 0, calc(50% - 710px) 21px, calc(50% + 710px) 21px, calc(50% + 720px) 0, 100% 0, 100% 100%, 0 100%);
+}
+#layout main .sect1 .sect1-area {
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+}
+#layout main .sect1 .sect1-area .sect1-contents {
+  max-width: 680px;
+  width: 100%;
+  height: auto;
+  margin-left: 50%;
+}
+#layout main .sect1 .sect1-area .sect1-contents .s1-c1 {
+  font-size: 42px;
+  font-weight: bolder;
+  color: #4b535d;
+  margin-bottom: 15px;
+}
+#layout main .sect1 .sect1-area .sect1-contents .s1-c2 {
+  font-size: 18px;
+  color: #4b535d;
+}
+#layout main .sect1 .sect1-area .sect1-contents .s1-box {
+  margin-top: 25px;
+  width: 200px;
+  height: 45px;
+  background-color: #f1732b;
+  color: white;
+  font-size: 21px;
+  justify-content: center;
+}
+#layout main .sect2 {
+  width: 100%;
+  height: 300px;
+  background-color: #fff;
+  position: relative;
+  padding: 40px;
+  background-image: url("../resource/sect2.webp");
+  background-size: auto;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  letter-spacing: -1px;
+}
+#layout main .sect2 .sect2-area {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+}
+#layout main .sect2 .sect2-area .sect2-contents {
+  width: 100%;
+  height: auto;
+  margin-right: 50%;
+  text-align: end;
+  justify-content: end;
+}
+#layout main .sect2 .sect2-area .sect2-contents .s2-c1 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #4b535d;
+  margin-bottom: 2px;
+}
+#layout main .sect2 .sect2-area .sect2-contents .s2-c2 {
+  font-size: 18px;
+  color: black;
+  font-weight: 400;
+}
+#layout main .sect2 .sect2-area .sect2-contents .s2-c3 {
+  font-size: 16px;
+  color: black;
+  font-weight: 400;
+  font-style: oblique;
+}
+#layout main .sect2 .sect2-area .sect2-contents .s2-box {
+  margin-top: 25px;
+  width: 200px;
+  height: 45px;
+  background-color: #0081d2;
+  color: white;
+  font-size: 21px;
+  justify-content: center;
+}
+#layout main .sect3 {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  position: relative;
+  background-image: url("../resource/tracer.jpg");
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  letter-spacing: -1px;
+}
+#layout main .sect3 .sect3-area {
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 90px 40px 70px;
+}
+#layout main .sect3 .sect3-area .sect3-contents1 {
+  height: 100%;
+  width: 50%;
+}
+#layout main .sect3 .sect3-area .sect3-contents1 .s3-t1 {
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+#layout main .sect3 .sect3-area .sect3-contents1 .s3-box {
+  padding-top: 80%;
+  background-color: skyblue;
+}
+#layout main .sect3 .sect3-area .sect3-contents2 {
+  height: 100%;
+  width: 50%;
+}
+#layout main .sect3 .sect3-area .sect3-contents2 .s3-m {
+  margin-left: 80px;
+  text-align: center;
+}
+#layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-mark {
+  height: 150px;
+  width: auto;
+  margin: 20px 0;
+}
+#layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-m-t {
+  font-size: 21px;
+  font-weight: 800;
+}
+#layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-m-box {
+  width: 200px;
+  height: 51px;
+  background-color: #141517;
+  color: white;
+  font-size: 21px;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+#layout main .sect4 {
+  width: 100%;
+  height: 1082px;
+  background-color: #9ea3cd;
+}
+
+/*-------- media -------*/
+/*--- custom-col = ccol -----*/
+/*-------- max -------*/
+@media (max-width: 1599px) {
+  #layout main .sect1 .sect1-area {
+    max-width: 1600px;
+    margin: 0;
+    padding: 0 20px;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents {
+    max-width: 50%;
+  }
+  #layout main .sect2 {
+    padding: 40px 20px 40px;
+  }
+  #layout main .sect3 .sect3-area {
+    padding: 90px 20px 70px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-m-t {
+    font-size: 18px;
+  }
+  #layout main .nav .n-area {
+    max-width: calc(100% - 40px) !important;
+  }
+  #layout main .nav .n-area .n-contents {
+    max-width: calc(100% - 40px) !important;
+  }
+  #layout.change-n main .nav {
+    padding: 0;
+  }
+  #layout.change-n main .nav .n-area {
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 1279px) {
+  #layout main .sect1 .sect1-area .sect1-contents .s1-c1 {
+    font-size: 29px;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents .s1-c2 {
+    font-size: 16px;
+    color: #4b535d;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents .s1-box {
+    height: 30px;
+    font-size: 16px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c1 {
+    font-size: 21px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c2 {
+    font-size: 16px;
+    color: #4b535d;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c3 {
+    font-size: 14px;
+    color: #4b535d;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-box {
+    height: 30px;
+    font-size: 16px;
+  }
+  #layout main .sect3 .sect3-area {
+    padding: 70px 20px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents1 .s3-t1 {
+    font-size: 18px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-mark {
+    height: 110px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-m-t {
+    font-size: 16px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-m-box {
+    font-size: 18px;
+    height: 38px;
+  }
+}
+@media (max-width: 959px) {
+  #layout main .sect1 {
+    padding: 50px 0;
+    background-image: none;
+    height: 576px;
+  }
+  #layout main .sect1 .s1-img {
+    position: absolute;
+    top: 20px;
+  }
+  #layout main .sect1 .sect1-area {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    align-items: end !important;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents .s1-c2 {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  #layout main .sect2 {
+    padding: 50px 0;
+    background-image: none;
+    height: auto;
+  }
+  #layout main .sect2 .s2-img {
+    position: absolute;
+    top: 0;
+  }
+  #layout main .sect2 .sect2-area {
+    margin-top: 250px;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    align-items: end !important;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: center;
+    text-align: center;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c1 {
+    font-size: 29px;
+    font-weight: 800;
+    margin-bottom: 15px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c2 {
+    width: 100%;
+    height: auto;
+    text-align: center;
+  }
+  #layout main .sect3 {
+    position: relative;
+  }
+  #layout main .sect3 .sect3-area {
+    flex-direction: column-reverse;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents1 {
+    margin-top: 330px;
+    width: 100%;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 360px;
+    background-image: url("../resource/tracer-trans.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m {
+    width: 50%;
+    margin: auto 0 auto 13%;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-mark {
+    height: 100px;
+  }
+}
+@media (max-width: 639px) {
+  #layout main .sect1 {
+    height: 540px;
+  }
+  #layout main .sect1 .sect1-area {
+    padding: 0 10px;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents .s1-c1 {
+    font-size: 20px;
+    margin-bottom: 11px;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents .s1-c2 {
+    font-size: 12px;
+  }
+  #layout main .sect1 .sect1-area .sect1-contents .s1-box {
+    margin-top: 15px;
+  }
+  #layout main .sect2 .sect2-area {
+    padding: 0 10px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c1 {
+    font-size: 20px;
+    margin-bottom: 11px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c2 {
+    font-size: 12px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-c3 {
+    font-size: 11px;
+  }
+  #layout main .sect2 .sect2-area .sect2-contents .s2-box {
+    margin-top: 15px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents1 {
+    margin-top: 300px;
+    width: 100%;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents1 .s3-box {
+    margin: auto;
+    padding: 0;
+    width: 360px;
+    height: 250px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents1 .s3-t1 {
+    height: auto;
+    max-width: 360px;
+    margin: auto;
+    padding-bottom: 8px;
+    font-size: 16px;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 320px;
+    background-position: center;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m {
+    width: 200px;
+    height: auto;
+    margin: auto 0 auto 13%;
+  }
+  #layout main .sect3 .sect3-area .sect3-contents2 .s3-m .s3-mark {
+    height: 100px;
+  }
+}
+
+/*# sourceMappingURL=grid-test.css.map */

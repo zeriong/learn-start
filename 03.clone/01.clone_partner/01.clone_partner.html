@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>clone_파트너등기</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/z-grid.css">
+    <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../css/clone_style.css">
+    <link rel="stylesheet" type="text/css" href="../../fontawesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<div class="z-layout">
+    <!---------------- menu -------------->
+    <div id="blur" class="menu-back" onclick="menu_click()"></div>
+    <div id="apply_back" class="menu-back" onclick="apply_cancel()">
+        <i class="fas fa-times cursor_pointer" style="font-size: 48px; color: white;  position: absolute; top: 25px; right: 30px;"
+           onclick="apply_cancel()"></i>
+    </div>
+    <div id="apply_fin" class="display-down">
+        <div class="apply-fin">
+            <div style="font-size: 40px; color: white; text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;">
+                신청이 완료되었습니다!</div>
+            <div class="z-mt-10" style="font-size: 20px; font-weight: 700;">빅맥세트 드시면서 기다리면 빠른시일 내에</div>
+            <div class="z-my-5" style="font-size: 20px; font-weight: 700;">햄버거 전문 상담사 <span style="color: #3182f6; font-size: 22px;"> 전젤렁 </span>이 연락드리겠습니다.</div>
+            <div class="z-flex z-justify-center z-align-center fin-button" onclick="apply_cancel()">확인</div>
+        </div>
+    </div>
+    <div id="menu" class="menu-close">
+        <div class="z-flex z-justify-end z-ma-4" style="font-size: 32px;" onclick="menu_click()">
+            <i class="far fa-times-circle" style="cursor: pointer"></i>
+        </div>
+        <div class="z-mb-8" style="cursor: pointer; font-size: 18px; font-weight: 500; color: rgba(0,0,0,0.78);">
+            서비스소개
+        </div>
+        <div class="z-mb-8" style="cursor: pointer; font-size: 18px; font-weight: 500; color: rgba(0,0,0,0.78);">
+            이용후기
+        </div>
+        <div class="z-mb-8" style="cursor: pointer; font-size: 18px; font-weight: 500; color: rgba(0,0,0,0.78);">
+            등기가이드
+        </div>
+        <a class="z-flex z-align-center z-mr-6 z-mb-4"
+           style="font-size: 18px; font-weight: 500; color: rgba(0,0,0,0.78)" href="">
+            <img class="header_icon" style="margin-right: 8px; width: 26px;" src="../img/icon-call.svg" alt="연락">
+            1588-0000
+        </a>
+        <a class="z-flex z-align-center z-mr-12"
+           style="font-size: 18px; font-weight: 500; color: rgba(0,0,0,0.78); width: 100%;" href="">
+            <img class="header_icon" style="margin-right: 8px; width: 26px;" src="../img/icon-talk.svg" alt="카톡">
+            카카오톡 문의하기
+        </a>
+    </div>
+    <!---------------- tap box -------------->
+    <div id="apply_pop" class="display-down">
+        <div class="tap-boxes">
+            <div class="tap-box-area">
+                <div id="corp_box" onclick="tap_corp()" class="corp-box popup-box-back">법인설립 신청</div>
+                <div id="service_box" onclick="tap_service()" class="service-box popup-box-back">서비스 신청</div>
+            </div>
+            <div class="z-px-6">
+                <div id="wana_what1" class="wana-what display-down">어떤 회사를 설립하려 하시나요?</div>
+                <div id="wana_what2" class="wana-what display-down">어떤 서비스가 필요하신가요?</div>
+                <div id="wana_what3" class="wana-what display-down">신청하시는 분을 알려주세요!</div>
+                <div class="apply-area">
+                    <!---------------- corp step -------------->
+                    <div id="corp_step" class="z-pr-6 display-down">
+                        <input id="corp_input1" class="corp-input" type="text" name="corp_input" placeholder=" 회사이름을 입력해주세요!">
+                        <input id="corp_input2" class="corp-input" type="text" name="corp_input" placeholder=" 회사의 위치를 입력해주세요!">
+                        <input id="corp_input3" class="corp-input" type="text" name="corp_input" placeholder=" 예상 자본금을 입력해주세요!">
+                        <input id="corp_input4" class="corp-input" type="text" name="corp_input" placeholder=" 어떤 업종을 고려하시나요?">
+                    </div>
+                    <!---------------- share step -------------->
+                    <div id="share_step" class="z-pr-6 display-down">
+                        <input id="share_input1" class="corp-input" type="text" name="share_input" placeholder=" 성함을 입력해주세요!">
+                        <input id="share_input2" class="corp-input" type="text" maxlength="13" oninput="auto_hyphen(this)" name="share_input" placeholder=" 휴대폰 번호를 입력해주세요!">
+                        <input id="share_input3" class="corp-input" type="text" name="share_input" placeholder=" 추천인이 있나요?">
+                    </div>
+                    <!---------------- service step -------------->
+                    <div id="service_step" class="wid_full display-down">
+                        <div class="z-pb-5">
+                            <input type="radio" id="serv_check1" name="serv_check" value="check1">
+                            <label for="serv_check1">법인 경영지원 상담 신청</label>
+                        </div>
+                        <div class="z-pb-5">
+                            <input type="radio" id="serv_check2" name="serv_check" value="check1">
+                            <label for="serv_check2">기존 법인 변경등기 신청</label>
+                        </div>
+                        <div class="z-pb-5">
+                            <input type="radio" id="serv_check3" name="serv_check" value="check1">
+                            <label for="serv_check3">부동산 등기 신청</label>
+                        </div>
+                        <div class="z-pb-5">
+                            <input type="radio" id="serv_check4" name="serv_check" value="check1">
+                            <label for="serv_check4">지급명령, 채권 압류/추심 등 민사신청</label>
+                        </div>
+                        <div class="z-pb-5">
+                            <input type="radio" id="serv_check5" name="serv_check" value="check1">
+                            <label for="serv_check5">상속포기 한정승인 등 가사신청</label>
+                        </div>
+                    </div>
+                </div>
+                <div id="safe_shield" class="safe-shield display-down">
+                    서비스 신청을 위해 남겨주신 개인정보는 <span style="color: #61b4ff;">이용약관</span>과<br>
+                    <span style="color: #61b4ff;">개인정보취급방침</span>에 따라 안전하게 보호됩니다.
+                </div>
+                <div class="ing-area">
+                    <div class="ing-bar1"></div>
+                    <div id="ing_bar" class="ing-bar2"></div>
+                </div>
+                <div id="ing_num" class="ing-num"
+                     style="font-size: 14px; color: #adadad; font-weight: 400;">1/2</div>
+            </div>
+            <!---------------- next box area -------------->
+            <div id="next_button_area" class="">
+                <div id="next_button" class="next-button next-button-base" onclick="next_tap()">
+                    다음
+                </div>
+            </div>
+            <!---------------- share box area -------------->
+            <div id="share_button" class="display-down">
+                <div class="share-button next-button-base">
+                    <div class="back_apply-button cursor_pointer" onclick="apply_back()" style="border-right: 2px solid #d7d7d7;">
+                        이전
+                    </div>
+                    <div id="submit" class="back_apply-button" onclick="apply_submit()">
+                        신청하기
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---------------- header -------------->
+    <header class="header">
+        <div>
+            <a href="http://127.0.0.1:8081/clone_partler.html">
+                <img class="icon_1" src="../img/logo-1.svg" alt="로고">
+            </a>
+        </div>
+        <nav class="header_text z-flex z-ml-3 wid_full z-align-center z-hidden-md-and-down">
+            <a class="z-pl-7" href="">서비스소개</a>
+            <a class="z-pl-7" href="">이용후기</a>
+            <a class="z-pl-7" href="">등기가이드</a>
+        </nav>
+        <div class="z-flex wid_full z-justify-end" style="height: 48px; padding-bottom: 4px;">
+            <a class="z-flex z-align-center z-mr-6 z-hidden-md-and-down" href=""><img class="header_icon" src="../img/icon-call.svg" alt="연락">고객센터 1588-0000</a>
+            <a class="z-flex z-align-center z-mr-12 z-hidden-md-and-down" href=""><img class="header_icon" src="../img/icon-talk.svg" alt="카톡">카카오톡 문의하기</a>
+            <!---------- header_md_ver -------->
+            <div class="z-flex z-align-center z-mr-6 z-hidden-lg-and-up" style="cursor: pointer; font-size: 19px;"><i class="fas fa-phone" style="color: black;"></i></div>
+            <div class="z-flex z-align-center z-mr-6 z-hidden-lg-and-up" onclick="menu_click()" style="cursor: pointer; font-size: 22px;"><i class="fas fa-bars" style="color: black;"></i></div>
+        </div>
+    </header>
+    <main style="height: 100%;">
+        <!---------------- intro -------------->
+        <section class="z-grow intro">
+            <video class="intro_video" autoplay="autoplay" loop="" muted playsinline>
+                <source src="../img/handshake-sm.mp4" type="video/mp4">
+            </video>
+            <div class="video_cover"></div>
+            <div class="intro_area">
+                <div class="cTxt1">복잡하고 어려운 건<br>파트너에게 맡기세요.</div>
+                <div class="cTxt2 z-mt-7">법인설립, 최저 수수료로 단 5일안에!</div>
+                <div class="cTxt3 z-mt-11 z-pb-12">법인 경영에 필요한 모든것을 지원하는 파트너등기!<br>
+                    <span class="point">"등기, 법률상담, 세무, 회계, 노무, 감정평가"<br class="z-hidden-md-and-up">
+                </span>
+                    등 통합 컨설팅과 솔루션 지원!
+                </div>
+                <div class="box_area z-row">
+                    <div id="tap_box_corp" class="contents_box z-mr-2" onclick="tap_corp_box()"
+                         style="background: linear-gradient(45deg, #0677E4FF, #20b4bd); cursor: pointer;">
+                        최저가 법인설립 신청</div>
+                    <div class="contents_box" onclick="tap_service_box()"
+                         style="background: linear-gradient(45deg, #7c3be5, #4f85fb); cursor: pointer;">
+                        등기/서비스 신청</div>
+                </div>
+            </div>
+            <!---------------- animate -------------->
+            <div class="animated-text">
+                <div class="line-stream">  <!-- 판자를 엡솔루트로 띄우고 css를 통해 슬라이드구현 -->
+                    <div class="line">
+                        <span>2시간전</span>
+                        <span>전**님</span>
+                        <span>법인설립 신청</span>
+                    </div>
+                    <div class="line">
+                        <span>2시간전</span>
+                        <span>박**님</span>
+                        <span>법인설립 신청</span>
+                    </div>
+                    <div class="line">
+                        <span>2시간전</span>
+                        <span>안**님</span>
+                        <span>법인설립 신청</span>
+                    </div>
+                    <div class="line">
+                        <span>2시간전</span>
+                        <span>백**님</span>
+                        <span>법인설립 신청</span>
+                    </div>
+                    <div class="line">
+                        <span>2시간전</span>
+                        <span>김**님</span>
+                        <span>법인설립 신청</span>
+                    </div>
+                    <div class="line">이외 오늘 문의 35건</div>
+                </div>
+            </div>
+        </section>
+        <!---------------- contents 1  -------------->
+        <section class="contents1 z-flex z-justify-center">
+            <div class="container">
+                <div class="z-row z-ma-0">
+                    <div class="z-col-sm-12 z-col-md-6">
+                        <div>
+                            <header class="z-pb-4 cate">서비스</header>
+                            <span class="title">쉽고 빠르고 저렴하게,<br>
+                            방문없이 전화 한통으로!</span>
+                        </div>
+                        <div class="conts1_box z-flex z-pl-4 z-mt-8 z-mb-3"
+                             data-aos="fade-right">
+                            <div class="conts1_box_num font_set z-pr-3">1.</div>
+                            <span class="font_set" style="font-size: 18px; font-weight: 500;">
+                        간편 서비스 신청</span>
+                        </div>
+                        <div class="conts1_box z-flex z-pl-4 z-mb-3"
+                             data-aos="fade-right" data-aos-delay="100">
+                            <div class="conts1_box_num font_set z-pr-3">2.</div>
+                            <span class="font_set" style="font-size: 18px; font-weight: 500;">
+                        법인 전문 법무사와의 1:1 상담 및 접수</span>
+                        </div>
+                        <div class="conts1_box z-flex z-pl-4"
+                             data-aos="fade-right" data-aos-delay="200">
+                            <div class="conts1_box_num font_set z-pr-3">3.</div>
+                            <span class="font_set" style="font-size: 18px; font-weight: 500;">
+                        서비스 진행</span>
+                        </div>
+                    </div>
+                    <div class="phone_area z-col-sm-12 z-col-md-6 z-flex z-justify-center z-align-center">
+                        <img class="phone" src="../img/mockup-phone.png" alt="폰">
+                    </div>
+                    <div class="conts1_line"></div>
+                    <div class="z-row z-col-12 z-ma-0">
+                        <div class="z-col-12 z-col-md-4 sub-mt-60"
+                             data-aos="fade-up">
+                            <div class="z-flex z-align-center sub-title">
+                                <i class="fas fa-building fa-lg conts_icon"></i>법인설립<br>
+                            </div>
+                            <div class="z-pt-4 sub-text">법인설립 전문 법무사의 1:1 상담을 통해<br>
+                                절세 방안 솔루션과 경영 컨설팅까지 체계적으로<br>
+                                정비된 회사를 설립하실 수 있습니다.
+                            </div>
+                        </div>
+                        <div class="z-col-12 z-col-md-4 sub-mt-60"
+                             data-aos="fade-up" data-aos-delay="100">
+                            <div class="z-flex z-align-center sub-title">
+                                <i class="fas fa-file-signature fa-lg conts_icon"></i>등기/법률 지원<br>
+                            </div>
+                            <div class="z-pt-4 sub-text">파트너등기는 법인등기 뿐만 아니라 부동산등기,<br>
+                                지급명령 등 법인을 운영하시며 발생하는 다양한<br>
+                                문제들을 합리적인 비용으로 해결해 드립니다.
+                            </div>
+                        </div>
+                        <div class="z-col-12 z-col-md-4 sub-mt-60"
+                             data-aos="fade-up" data-aos-delay="200">
+                            <div class="z-flex z-align-center sub-title">
+                                <i class="fas fa-handshake fa-lg conts_icon"></i>통합지원 솔루션<br>
+                            </div>
+                            <div class="z-pt-4 sub-text">"등기/법무/세무/회계/노무/감정평가" 등<br>
+                                각 분야의 전문가 그룹이 함께 설립부터 경영에<br>
+                                필요한 다양한 업무지원 솔루션을 제공하여<br>
+                                파트너등기와 함께라면 든든합니다.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!---------------- contents 2  -------------->
+        <section class="contents2 z-flex z-justify-center">
+            <div class="container">
+                <div class="z-row z-ma-0">
+                    <div class="cate z-mb-4 z-col-12">혜택</div>
+                    <div class="title z-col-12">법인 설립시 6가지<br class="z-hidden-md-and-up"> 무료혜택!</div>
+                    <div class="conts2_text z-col-12 z-mt-2">726,000원 상당의 고품질 서비스가<br class="z-hidden-md-and-up"> 기본제공됩니다.</div>
+                </div>
+                <div class="z-row z-mt-8">
+                    <div class="z-col-6 z-col-md-4 z-ma-0"
+                         data-aos="zoom-in-up" data-aos-duration="200">
+                        <div class="conts2_box z-row z-justify-center z-align-center">
+                            <div style="text-align: center;">
+                                <div style="font-size: 22px; padding-left: 12px;">
+                                    <i class="fas fa-file-signature fa-lg conts_icon"></i>
+                                </div>
+                                <div class="sub-title z-mt-4">
+                                    업종별 맞춤정관
+                                </div>
+                                <div class="sub-text">
+                                    <span class="text_through">300,000</span>
+                                    기본제공
+                                </div>
+                                <div class="sub-text">
+                                    테스트 내용입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="z-col-6 z-col-md-4 z-ma-0"
+                         data-aos="zoom-in-up" data-aos-duration="200" data-aos-delay="50">
+                        <div class="conts2_box z-flex z-justify-center z-align-center">
+                            <div style="text-align: center;">
+                                <div style="font-size: 22px; padding-left: 12px;">
+                                    <i class="far fa-star fa-lg conts_icon"></i>
+                                </div>
+                                <div class="sub-title z-mt-4">
+                                    법인경영/절세 컨설팅
+                                </div>
+                                <div class="sub-text">
+                                    <span class="text_through">300,000</span>
+                                    기본제공
+                                </div>
+                                <div class="sub-text">
+                                    테스트 내용입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="z-col-6 z-col-md-4 z-ma-0"
+                         data-aos="zoom-in-up" data-aos-duration="200" data-aos-delay="100">
+                        <div class="conts2_box z-flex z-justify-center z-align-center">
+                            <div style="text-align: center;">
+                                <div style="font-size: 22px; padding-left: 12px;">
+                                    <i class="fas fa-gavel fa-lg conts_icon"></i>
+                                </div>
+                                <div class="sub-title z-mt-4">
+                                    법률상담
+                                </div>
+                                <div class="sub-text">
+                                    <span class="text_through">100,000</span>
+                                    기본제공
+                                </div>
+                                <div class="sub-text">
+                                    테스트 내용입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="z-col-6 z-col-md-4 z-ma-0"
+                         data-aos="zoom-in-up"  data-aos-duration="500">
+                        <div class="conts2_box z-flex z-justify-center z-align-center">
+                            <div style="text-align: center;">
+                                <div style="font-size: 22px; padding-left: 12px;">
+                                    <i class="fas fa-stamp fa-lg conts_icon"></i>
+                                </div>
+                                <div class="sub-title z-mt-4">
+                                    법인인감도장
+                                </div>
+                                <div class="sub-text">
+                                    <span class="text_through">20,000</span>
+                                    기본제공
+                                </div>
+                                <div class="sub-text">
+                                    테스트 내용입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="z-col-6 z-col-md-4 z-ma-0"
+                         data-aos="zoom-in-up" data-aos-duration="700" data-aos-delay="50">
+                        <div class="conts2_box z-flex z-justify-center z-align-center">
+                            <div style="text-align: center;">
+                                <div style="font-size: 22px; padding-left: 12px;">
+                                    <i class="far fa-file-alt fa-lg conts_icon"></i>
+                                </div>
+                                <div class="sub-title z-mt-4">
+                                    법인등기부 3부
+                                </div>
+                                <div class="sub-text">
+                                    <span class="text_through">3,000</span>
+                                    기본제공
+                                </div>
+                                <div class="sub-text">
+                                    테스트 내용입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="z-col-6 z-col-md-4 z-ma-0"
+                         data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="100">
+                        <div class="conts2_box z-flex z-justify-center z-align-center">
+                            <div style="text-align: center;">
+                                <div style="font-size: 22px; padding-left: 12px;">
+                                    <i class="fas fa-certificate fa-lg conts_icon"></i>
+                                </div>
+                                <div class="sub-title z-mt-4">
+                                    법인인감증명서 3부
+                                </div>
+                                <div class="sub-text">
+                                    <span class="text_through">3,000</span>
+                                    기본제공
+                                </div>
+                                <div class="sub-text">
+                                    테스트 내용입니다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!---------------- contents 3  -------------->
+        <section class="contents3 z-flex z-justify-center">
+            <div class="container" style="text-align: center;">
+                <div class="text1" data-aos="fade-up">
+                    사업은 파트너와 함께
+                </div>
+                <div class="text2 z-my-7" data-aos="fade-up" data-aos-delay="100">
+                    시작부터 끝까지 법인 경영에 필요한 모든 것을<br class="z-hidden-lg-and-up"> 파트너가 함께 해드립니다.
+                </div>
+                <div class="box_area" data-aos="fade-up" data-aos-delay="150">
+                    <div class="z-flex">
+                        <div class="contents_box" onclick="tap_corp_box()"
+                             style="background: linear-gradient(45deg, #0677E4FF, #20b4bd);">
+                            최저가 법인설립 신청
+                        </div>
+                        <div class="contents_box" onclick="tap_service_box()"
+                             style="background: linear-gradient(45deg, #7c3be5, #4f85fb);">
+                            등기/서비스 신청</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!---------------- contents 4  +  slide  -------------->
+        <section class="contents4 z-flex z-justify-center">
+            <div class="container">
+                <div class="cate z-mb-4">이용후기</div>
+                <div class="title z-mb-7">파트너등기를 이용해 주신<br>
+                    고객님들의 소중한 후기!</div>
+                <div class="slide-back">
+                    <div class="slide-area">
+                        <div class="slide-rev"></div>
+                        <div class="slide-next"></div>
+                        <div class="slide-stream">
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                            <i class="fas fa-star starIcon"></i>
+                                            <i class="fas fa-star starIcon"></i>
+                                            <i class="fas fa-star starIcon"></i>
+                                            <i class="fas fa-star starIcon"></i>
+                                            <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                            <div class="slide-box-area">
+                                <div class="slide-box">
+                                    <div class="review-stars">
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                        <i class="fas fa-star starIcon"></i>
+                                    </div>
+                                    <div class="review-name">신** 대표님</div>
+                                    <div class="review-contents">이름이 왜 파트너등기인지 알것같아요. 등기만 진행해 주는게 아니라 앞으로도 관련 업무 전받을 믿고 맡길수 있겠어요</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!---------------- contents 5  -------------->
+        <section class="contents5 z-flex z-justify-center">
+            <div class="container z-py-12">
+                <div class="z-row z-align-center">
+                    <div class="z-col-12 z-col-md-6">
+                        <div class="z-mb-2" style="font-size: 16px; font-weight: 500;">파트너등기 고객센터</div>
+                        <div class="z-my-4" style="font-size: 32px; font-weight: 800;">1533-9687</div>
+                        <div class="same-text">평일 오전 9시 - 오후 6시 (주말, 공휴일 제외)</div>
+                    </div>
+                    <div class="z-col-12 z-col-md-6">
+                        <div class=" same-text z-mb-3">서울특별시 강남구 강남대로 354 혜천빌딩 1203-1호</div>
+                        <div class=" same-text">사업자 등록번호 : 741-20-01563</div>
+                        <div class=" same-text z-mb-4">에이블 법무사 사무소 | 대표 : 김하얀꿈</div>
+                        <div class="" style="font-size: 16px; font-weight: 500;">시작부터 끝까지, 믿을수 있는
+                            <span class=" cate" style="font-weight: 600; font-size: 16px;">파트너등기</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!---------------- tail -------------->
+        <footer class="tail z-flex z-justify-center">
+            <div class="tail-container z-flex z-align-center">
+                <div class="z-justify-start wid_full">
+                    <a class="tail-text" href="">서비스소개</a>
+                    <a class="tail-text" href="">이용약관</a>
+                    <a class="tail-text" href="">개인정보처리방침</a>
+                </div>
+                <div class="z-flex z-justify-end wid_full" style="font-weight: 300; font-size: 13px;">
+                    © 2022 파트너등기<a class="z-ml-1" href=""><i class="fas fa-cog" style="font-size: 11px;"></i></a>
+                </div>
+            </div>
+        </footer>
+    </main>
+</div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+    const auto_hyphen = (target) => {
+        target.value = target.value
+            .replace(/[^0-9]/g, '')
+            .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+    }
+
+    function menu_click() {
+        document.getElementById("menu").classList.toggle("menu-open");
+        document.getElementById("blur").classList.toggle("menu-back-open");
+    }
+
+    /* -----------------   tap-box  area   --------------*/
+    let choose_popup = "";
+    let share_vital = false;
+    let S_N_B_V = false;
+    let C_N_B_V = false;
+
+    let input_acc = document.querySelectorAll('input[name="corp_input"]');
+    input_acc.forEach((input_ac)=>{
+        input_ac.addEventListener('input',()=>{
+            if (input_acc[0].value.length > 1 && input_acc[1].value.length > 1 &&
+                input_acc[2].value.length > 1 && input_acc[3].value.length > 1) {
+                C_N_B_V = true;
+                box_switch();
+            }
+            else {
+                C_N_B_V = false;
+                box_switch();}
+
+        });
+    });
+
+    let share_acc = document.querySelectorAll('input[name="share_input"]');
+    share_acc.forEach((share_ac)=>{
+        share_ac.addEventListener('input', ()=>{
+            if (share_acc[0].value.length > 1 && share_acc[1].value.length === 13) {
+                share_vital = true;
+                submit_switch();
+            }
+        });
+    });
+
+    let check_li = document.querySelectorAll("input[name='serv_check']");
+    check_li.forEach((check_loop)=>{
+        check_loop.addEventListener('change', ()=>{
+            S_N_B_V = true;
+            box_switch();
+        });
+    });
+
+    function tap_corp_box() {
+        choose_popup = "corp";
+        document.getElementById("corp_box").classList.add("popup-conts-tap");
+        document.getElementById("corp_box").classList.remove("popup-box-back");
+        document.getElementById("service_box").classList.remove("popup-conts-tap");
+        document.getElementById("service_box").classList.add("popup-box-back");
+        document.getElementById("wana_what1").classList.remove("display-down");
+        document.getElementById("corp_step").classList.remove("display-down");
+        document.getElementById("wana_what2").classList.add("display-down");
+        document.getElementById("service_step").classList.add("display-down");
+        document.getElementById("wana_what3").classList.add("display-down");
+        document.getElementById("share_step").classList.add("display-down");
+        document.getElementById("safe_shield").classList.add("display-down");
+        document.getElementById("next_button_area").classList.remove("display-down");
+        document.getElementById("share_button").classList.add("display-down");
+        ing_step1();
+        apply_up();
+        box_switch();
+    }
+    function tap_corp() {
+        tap_corp_box();
+    }
+    function tap_service_box() {
+        choose_popup = "service";
+        document.getElementById("service_box").classList.add("popup-conts-tap");
+        document.getElementById("service_box").classList.remove("popup-box-back");
+        document.getElementById("corp_box").classList.remove("popup-conts-tap");
+        document.getElementById("corp_box").classList.add("popup-box-back");
+        document.getElementById("wana_what2").classList.remove("display-down");
+        document.getElementById("service_step").classList.remove("display-down");
+        document.getElementById("wana_what1").classList.add("display-down");
+        document.getElementById("corp_step").classList.add("display-down");
+        document.getElementById("next_button_area").classList.remove("display-down");
+        document.getElementById("share_button").classList.add("display-down");
+        document.getElementById("wana_what3").classList.add("display-down");
+        document.getElementById("share_step").classList.add("display-down");
+        document.getElementById("safe_shield").classList.add("display-down");
+        apply_up();
+        ing_step1();
+        box_switch();
+    }
+    function tap_service() {
+        tap_service_box();
+    }
+
+    function next_tap() {
+        if (C_N_B_V === true || S_N_B_V === true) {
+            if (choose_popup === "corp"){
+                document.getElementById("wana_what1").classList.add("display-down");
+                document.getElementById("wana_what3").classList.remove("display-down");
+                document.getElementById("corp_step").classList.add("display-down");
+            }
+            else if (choose_popup === "service") {
+                document.getElementById("wana_what2").classList.add("display-down");
+                document.getElementById("wana_what3").classList.remove("display-down");
+                document.getElementById("service_step").classList.add("display-down");
+            }
+            document.getElementById("share_step").classList.remove("display-down");
+            document.getElementById("safe_shield").classList.remove("display-down");
+            document.getElementById("next_button_area").classList.add("display-down");
+            document.getElementById("ing_num").innerHTML = "2/2";
+            document.getElementById("ing_bar").style.left = "0px";
+            document.getElementById("share_button").classList.remove("display-down");
+        }
+    }
+    function apply_back() {
+        if ( choose_popup === "corp" ) {
+            tap_corp();
+        }
+        else {
+            tap_service();
+        }
+        document.getElementById("share_button").classList.add("display-down");
+        document.getElementById("next_button_area").classList.remove("display-down");
+    }
+
+    function box_switch() {
+        function fill_Box_() {
+            document.getElementById("next_button").classList.add("next-button-fill");
+            document.getElementById("next_button").classList.remove("next-button-base");
+        }
+        function empty_box(){
+            document.getElementById("next_button").classList.remove("next-button-fill");
+            document.getElementById("next_button").classList.add("next-button-base");
+        }
+        if (choose_popup === "corp" && C_N_B_V === true) {fill_Box_();}
+        else if (choose_popup === "corp" && C_N_B_V === false) {empty_box();}
+        else if (choose_popup === "service" && S_N_B_V === true) {fill_Box_();}
+        else if (choose_popup === "service" && S_N_B_V === false) {empty_box();}
+    }
+
+    function submit_switch() {
+        if (share_vital===true) {
+            document.getElementById("submit").classList.add("next-button-fill");
+            document.getElementById("submit").classList.remove("next-button-base");
+        }
+        else {
+            document.getElementById("submit").classList.remove("next-button-fill");
+            document.getElementById("submit").classList.add("next-button-base");
+        }
+    }
+    function apply_submit() {
+        if (share_vital === true) {
+            document.getElementById("apply_pop").classList.add("display-down");
+            document.getElementById("apply_fin").classList.remove("display-down");
+        }
+    }
+    function apply_cancel() {
+        document.getElementById("apply_pop").classList.add("display-down");
+        document.getElementById("apply_back").classList.remove("menu-back-open");
+        document.getElementById("apply_fin").classList.add("display-down");
+    }
+    function apply_up() {
+        document.getElementById("apply_pop").classList.remove("display-down");
+        document.getElementById("apply_back").classList.add("menu-back-open");
+    }
+    function ing_step1() {
+        document.getElementById("ing_num").innerHTML = "1/2";
+        document.getElementById("ing_bar").style.left = "-100%";
+    }
+
+    /*     slider     */
+    // 변수를 배열값에 넣어서 모두 적용되게만듦. 기존에 스트림부분에만 마우스대면 멈춰서
+    // 다음이랑 이전버튼도 같이 포함시켜주기 위해서 배열을 사용함.
+
+    let slide_box = document.querySelectorAll('.slide-box-area');
+
+    let slide_items = [];
+    slide_items[0] = document.querySelector('.slide-stream');
+    slide_items[1] = document.querySelector('.slide-next');
+    slide_items[2] = document.querySelector('.slide-rev');
+
+    document.addEventListener('DOMContentLoaded' , ()=>{
+        slide_items[2].addEventListener('click', ()=>{
+            slide_items[0].insertBefore(slide_box[slide_box.length - 1], slide_box[0]);
+            slide_box = document.querySelectorAll('.slide-box-area');
+        });
+        slide_items[1].addEventListener('click', ()=>{
+            time_man();
+        });
+    });
+    function time_man() {
+        slide_items[0].appendChild(slide_box[0]);
+        slide_box = document.querySelectorAll('.slide-box-area');
+    }
+
+    /*   슬라이더 타이머   */
+
+    let time_fl = true;
+
+    let timer = setInterval(()=>{
+        if (time_fl === true) {
+            time_man();
+        }
+    },3000);
+
+    slide_items.forEach((timerSwitch)=> {
+        timerSwitch.addEventListener('mouseenter', () => { // 마우스 들어옴
+            time_fl = false;
+        });
+        timerSwitch.addEventListener('mouseleave', () => { // 벗어남
+            time_fl = true;
+        });
+    });
+    /*   intro - animate   */
+
+    /*   //자바 인트로슬라이드
+    let line_box = document.querySelectorAll('.line');
+    let line_stream = document.querySelector('.animated-text');
+    let last_line = document.querySelector('.act-line');
+
+    let intro_timer = setInterval(()=>{
+        if (line_box[1] === document.querySelector('.act-line')){
+            line_box[1] = document.querySelector('.line1');
+            line_box[2] = document.querySelector('.line2');
+            line_box[3] = document.querySelector('.line3');
+            line_box[4] = document.querySelector('.line4');
+            line_box[5] = document.querySelector('.line5');
+            line_box[6] = document.querySelector('.line6');
+        }
+        line_stream.appendChild(line_box[0]);
+        line_box = document.querySelectorAll('.line');
+    },2500);
+    */
+</script>
+</body>
+</html>

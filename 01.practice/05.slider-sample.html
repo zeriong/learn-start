@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>샘플1</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/z-grid.css">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;500;700;900&display=swap');
+
+    *{
+        font-family: 'Noto Sans KR', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #fff;
+    }
+
+    /* Gallery */
+
+    .gallery {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 230px;
+        overflow: hidden;
+    }
+
+    .gallery:before,
+    .gallery:after {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 20%;
+        height: 100%;
+        z-index: 3;
+    }
+
+    .gallery:before {
+        left: 0;
+        background:  linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    .gallery:after {
+        right: 0;
+        background:  linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    }
+
+    .gallery__stream {
+        position: relative;
+        /*top: 25%;
+        transform: translateY(-50%);*/
+        width: 100%;
+        height: 100%;
+    }
+
+    .gallery__item {
+        position: absolute;
+        width: 25%;
+        height: 200px;
+        transition: 0.5s all ease-in;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        padding: 24px;
+    }
+
+    .gallery__item_inner {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+        color: #111;
+        font-size: 20px;
+        padding: 24px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .gallery__item {
+            width: 50%;
+        }
+
+        .gallery__item:nth-child(1) {
+            left: 0;
+            z-index: 1;
+            transform: translateX(-100%) scale(0.8);
+        }
+
+        .gallery__item:nth-child(2) {
+            left: 0;
+            z-index: 2;
+            transform: translateX(-50%) scale(0.9);
+        }
+
+        .gallery__item:nth-child(3) {
+            left: 50%;
+            z-index: 4;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(4) {
+            left: 100%;
+            z-index: 2;
+            transform: translateX(-50%) scale(0.9);
+        }
+
+        .gallery__item:nth-child(n+5) {
+            left: 100%;
+            z-index: 1;
+            transform: scale(0.8);
+        }
+    }
+    @media only screen and (min-width: 600px) and (max-width: 1600px) {
+
+        .gallery__item {
+            width: 33.33%;
+        }
+
+        .gallery__item:nth-child(1) {
+            left: 0;
+            z-index: 1;
+            transform: translateX(-100%) scale(0.7);
+        }
+
+        .gallery__item:nth-child(2) {
+            left: 0;
+            z-index: 2;
+            transform: translateX(-50%) scale(0.9);
+        }
+
+        .gallery__item:nth-child(3) {
+            left: 33.33%;
+            z-index: 3;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(4) {
+            left: 66.66%;
+            z-index: 3;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(5) {
+            left: 100%;
+            z-index: 2;
+            transform: translateX(-50%) scale(0.9);
+        }
+
+        .gallery__item:nth-child(n+6) {
+            left: 100%;
+            z-index: 1;
+            transform: scale(1);
+        }
+
+    }
+    @media only screen and (min-width: 1600px) {
+        .gallery__item {
+            width: 25%;
+        }
+
+        .gallery__item:nth-child(1) {
+            left: 0;
+            z-index: 1;
+            transform: translateX(-100%) scale(0.7);
+        }
+
+        .gallery__item:nth-child(2) {
+            left: 0;
+            z-index: 2;
+            transform: translateX(-50%) scale(0.9);
+        }
+
+        .gallery__item:nth-child(3) {
+            left: 25%;
+            z-index: 3;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(4) {
+            left: 50%;
+            z-index: 4;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(5) {
+            left: 75%;
+            z-index: 3;
+            transform: translateX(-50%) scale(1);
+        }
+
+        .gallery__item:nth-child(6) {
+            left: 100%;
+            z-index: 2;
+            transform: translateX(-50%) scale(0.9);
+        }
+
+        .gallery__item:nth-child(n+7) {
+            left: 100%;
+            z-index: 1;
+            transform: scale(1);
+        }
+    }
+
+
+    /* Controllers */
+
+    .gallery__prev,
+    .gallery__next {
+        position: absolute;
+        top: 50%;
+        z-index: 4;
+        width: 50%;
+        height: 100%;
+        transform: translateX(-50%) translateY(-50%) scale(.8);
+        cursor: pointer;
+    }
+
+    .gallery__prev {
+        left: 0;
+    }
+
+    .gallery__next {
+        left: 100%;
+    }
+</style>
+<body class="z-pa-10">
+<div class="gallery">
+    <div class="gallery__prev"></div>
+    <div class="gallery__next"></div>
+    <div class="gallery__stream">
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트1
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트2
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트3
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트4
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트5
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트6
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트7
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트8
+            </div>
+        </div>
+        <div class="gallery__item">
+            <div class="gallery__item_inner">
+                테스트8
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var stream = document.querySelector('.gallery__stream');
+        var items = document.querySelectorAll('.gallery__item');
+
+        var prev = document.querySelector('.gallery__prev');
+        prev.addEventListener('click', function() {
+            stream.insertBefore(items[items.length - 1], items[0]);
+            items = document.querySelectorAll('.gallery__item');
+        });
+
+        var next = document.querySelector('.gallery__next');
+        next.addEventListener('click', function() {
+            stream.appendChild(items[0]);
+            items = document.querySelectorAll('.gallery__item');
+        });
+    });
+</script>
+</body>
+</html>
